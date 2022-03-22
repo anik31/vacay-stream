@@ -1,0 +1,5 @@
+/* mockman-css */
+@import url("https://unpkg.com/mockman-js@latest/dist/style.css");
+
+/* vacay-ui css */
+@import url("https://vacay-ui.netlify.app/components/vacay.css");
