@@ -1,0 +1,57 @@
+.dot-separator{
+    font-size: 1.2rem;
+}
+
+.card-content{
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.video-metrics{
+    width: 100%;
+}
+
+.video-metrics .text-sm{
+    font-size: 0.9rem;
+}
+
+.card-vertical .video-metrics{
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+.card-title{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card-vertical{
+    align-items: flex-start;
+    width: 20rem;
+    height: 18rem;
+}
+
+.card-vertical img{
+    height: 11rem;
+}
+
+.card-vertical .btn{
+    height: 2rem;
+}
+
+.card-vertical .fa-heart{
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+.btn-like-dislike-wrapper{
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-like-dislike-wrapper button{
+    font-size: 1rem;
+}

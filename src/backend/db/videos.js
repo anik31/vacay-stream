@@ -16,7 +16,8 @@ export const videos = [
       src: "https://img.youtube.com/vi/UykTYYgArbc/0.jpg",
       alt: "Chadar Trek"
     },
-    categoryName: "Trekking"
+    categoryName: "Trekking",
+    mustWatch: true
   },
   {
     _id: "cCRICcY9fWA",
@@ -72,7 +73,8 @@ export const videos = [
       src: "https://img.youtube.com/vi/cTxPiPyNrgU/0.jpg",
       alt: "Kerala's best beaches in Varkala!"
     },
-    categoryName: "Beaches"
+    categoryName: "Beaches",
+    mustWatch: true
   },
   {
     _id: "70WgbWEF3Tk",
@@ -128,7 +130,8 @@ export const videos = [
       src: "https://img.youtube.com/vi/ltT6a7dM7RU/0.jpg",
       alt: "Kodaikanal Travel video"
     },
-    categoryName: "Hill Station"
+    categoryName: "Hill Station",
+    mustWatch: true
   },
   {
     _id: "eAEjFfjO9gg",
@@ -227,5 +230,5 @@ export const videos = [
       alt: "Jim Corbett National Park"
     },
     categoryName: "Jungle Safari"
-  },
+  }
 ];

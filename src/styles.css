@@ -3,3 +3,25 @@
 
 /* vacay-ui css */
 @import url("https://vacay-ui.netlify.app/components/vacay.css");
+
+/* reset css */
+button{
+    background: transparent;
+}
+
+/* common css */
+.page-title{
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.video-cards-container{
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+}
+
+.video-cards-container:nth-child(n){
+    justify-items: center;
+}
