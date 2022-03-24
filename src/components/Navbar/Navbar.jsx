@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-// import { useProducts } from "../../context/product-context";
 import "./navbar.css";
 
 export function Navbar(){
-    // const {state} = useProducts();
-
     return (
         <header className="header">
         <div className="hamburger-logo-wrapper">
