@@ -18,10 +18,12 @@ export function Navbar(){
         </nav>
         <nav className="navigation">
             <ul>
-                <li><Link to="/videos" className="btn btn-secondary-link">Explore</Link></li>
-                <li><Link to="/playlists" className="btn btn-secondary-link">Playlists</Link></li>
-                <li><Link to="/likes" className="btn btn-secondary-link">Likes</Link></li>
-                <li><Link to="/watch-later" className="btn btn-secondary-link">Watch Later</Link></li>
+                {[{linkTo:"/videos", linkFor:"Explore"},
+                {linkTo:"/playlists", linkFor:"Playlists"},
+                {linkTo:"/likes", linkFor:"Likes"},
+                {linkTo:"/watch-later", linkFor:"Watch Later"}].map(({linkTo, linkFor}) => 
+                <li><Link to={linkTo} className="btn btn-secondary-link">{linkFor}</Link></li>)}
+                
             </ul>
         </nav>
         <div className="search-box">
