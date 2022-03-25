@@ -14,7 +14,7 @@ export function Home(){
                 <div className="hero-content">
                     <h3>Discover India's top vacation & adventure destinations</h3>
                     <span>Vacay stream is the leading streaming platform to find & showcase creative vlogs and home to India's curious travellers.</span>
-                    <Link to="/explore" className="btn btn-primary">Explore Now <i className="fas fa-long-arrow-alt-right"></i></Link>
+                    <Link to="/videos" className="btn btn-primary">Explore Now <i className="fas fa-long-arrow-alt-right"></i></Link>
                 </div>
                 <div className="img-wrapper">
                     <img className="img-responsive" src={hero} alt="hero" />

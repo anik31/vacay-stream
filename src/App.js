@@ -1,7 +1,7 @@
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
-import {Home} from "./pages";
+import {Home, Videos} from "./pages";
 import { useAsyncFetch } from "./hooks";
 import { Navbar } from "./components";
 
@@ -23,6 +23,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/videos" element={<Videos/>} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>

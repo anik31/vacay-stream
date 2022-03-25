@@ -15,8 +15,8 @@ export function VideoCard({value}){
                     <span className="dot-separator text-gray"> • </span>
                     <span className="text-gray text-sm">{uploaded} ago</span>
                     <div className="btn-like-dislike-wrapper">
-                        <button><i class="far fa-thumbs-up"></i></button>
-                        <button><i class="far fa-thumbs-down"></i></button>
+                        <button><i className="far fa-thumbs-up"></i></button>
+                        <button><i className="far fa-thumbs-down"></i></button>
                     </div>
                 </div>
             </div>

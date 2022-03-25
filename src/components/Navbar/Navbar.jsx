@@ -18,8 +18,10 @@ export function Navbar(){
         </nav>
         <nav className="navigation">
             <ul>
-                <li><Link to="/explore" className="btn btn-secondary-link">Explore</Link></li>
+                <li><Link to="/videos" className="btn btn-secondary-link">Explore</Link></li>
                 <li><Link to="/playlists" className="btn btn-secondary-link">Playlists</Link></li>
+                <li><Link to="/likes" className="btn btn-secondary-link">Likes</Link></li>
+                <li><Link to="/watch-later" className="btn btn-secondary-link">Watch Later</Link></li>
             </ul>
         </nav>
         <div className="search-box">

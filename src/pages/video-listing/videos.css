@@ -1,0 +1,17 @@
+/* products listing */
+.video-page-container{
+    /* display: grid; */
+    /* grid-template-columns: 16rem 1fr; */
+    margin-top: 2rem;
+}
+
+.category-chips{
+    display: flex;
+    gap: 1rem;
+    margin-left: 6rem;
+}
+
+.category-chips .btn{
+    border-radius: 2rem;
+    font-size: 1.1rem;
+}

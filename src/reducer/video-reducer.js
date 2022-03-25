@@ -4,5 +4,7 @@ export function videoReducer(state, action){
             return {...state, videos: action.payload};
         case "SET_CATEGORIES":
             return {...state, categories: action.payload};
+        case "FILTER_BY_CATEGORIES":
+            return {...state, categoryFilter: action.payload};
     }
 }
