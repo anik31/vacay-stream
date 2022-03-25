@@ -20,10 +20,9 @@ export function Navbar(){
             <ul>
                 {[{linkTo:"/videos", linkFor:"Explore"},
                 {linkTo:"/playlists", linkFor:"Playlists"},
-                {linkTo:"/likes", linkFor:"Likes"},
+                {linkTo:"/liked", linkFor:"Liked"},
                 {linkTo:"/watch-later", linkFor:"Watch Later"}].map(({linkTo, linkFor}) => 
-                <li><Link to={linkTo} className="btn btn-secondary-link">{linkFor}</Link></li>)}
-                
+                <li key={linkTo}><Link to={linkTo} className="btn btn-secondary-link">{linkFor}</Link></li>)}
             </ul>
         </nav>
         <div className="search-box">

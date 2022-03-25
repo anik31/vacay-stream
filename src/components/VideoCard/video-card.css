@@ -53,5 +53,9 @@
 }
 
 .btn-like-dislike-wrapper button{
-    font-size: 1rem;
+    font-size: 1.3rem;
+}
+
+.btn-like-dislike-wrapper .fas.fa-thumbs-up{
+    color: var(--primary-color);
 }

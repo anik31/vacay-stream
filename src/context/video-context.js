@@ -6,7 +6,8 @@ const VideoContext = createContext(null);
 const initialState = {
     videos: [],
     categories: [],
-    categoryFilter: "All"
+    categoryFilter: "All",
+    likedVideos: []
 }
 
 const VideoProvider = ({children}) => {
