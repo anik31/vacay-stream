@@ -20,8 +20,5 @@ button{
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
-}
-
-.video-cards-container:nth-child(n){
-    justify-items: center;
+    justify-items: center;    
 }
