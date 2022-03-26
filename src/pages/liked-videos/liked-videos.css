@@ -1,4 +1,7 @@
 .liked-videos-card-wrapper{
     margin: 2rem 0;
+}
+
+.liked-videos-card-wrapper h2{
     text-align: center;
 }
