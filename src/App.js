@@ -4,8 +4,13 @@ import Mockman from "mockman-js";
 import {Home, Videos, LikedVideos} from "./pages";
 import { useAsyncFetch, useLogin } from "./hooks";
 import { Navbar } from "./components";
+import { useEffect } from "react";
+import { getLikedVideos } from "./utils";
+import { useVideos } from "./context/video-context";
 
 function App() {
+  const {dispatch} = useVideos();
+  
   useAsyncFetch({
     url: "/api/videos",
     dispatchType:"SET_VIDEOS",
@@ -19,6 +24,10 @@ function App() {
   })
   
   useLogin();
+
+  useEffect(()=>{
+    getLikedVideos(dispatch);
+  },[])
 
   return (
     <div className="App">
