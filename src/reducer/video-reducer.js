@@ -6,5 +6,7 @@ export function videoReducer(state, action){
             return {...state, categories: action.payload};
         case "FILTER_BY_CATEGORIES":
             return {...state, categoryFilter: action.payload};
+        case "SET_LIKED_VIDEOS":
+            return {...state, likedVideos: action.payload};
     }
 }
