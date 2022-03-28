@@ -1,11 +1,11 @@
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
-import {Home, Videos, LikedVideos} from "./pages";
+import { Home, Videos, LikedVideos, WatchLater } from "./pages";
 import { useAsyncFetch, useLogin } from "./hooks";
 import { Navbar } from "./components";
 import { useEffect } from "react";
-import { getLikedVideos } from "./utils";
+import { getLikedVideos, getWatchLaterVideos } from "./utils";
 import { useVideos } from "./context/video-context";
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
 
   useEffect(()=>{
     getLikedVideos(dispatch);
+    getWatchLaterVideos(dispatch);
   },[])
 
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/videos" element={<Videos/>} />
         <Route path="/liked" element={<LikedVideos/>} />
+        <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>

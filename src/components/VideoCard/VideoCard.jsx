@@ -1,6 +1,9 @@
 import "./video-card.css"
 import {useVideos} from "../../context/video-context";
-import { addToLikedVideos, removeFromLikedVideos } from "../../utils";
+import { 
+    addToLikedVideos, removeFromLikedVideos, 
+    addToWatchLaterVideos, removeFromWatchLaterVideos
+} from "../../utils";
 
 export function VideoCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
@@ -9,6 +12,9 @@ export function VideoCard({value}){
     return (
         <div className="card card-vertical">
             <i className="far fa-heart"></i>
+            {state.watchLaterVideos.find(item=>item._id===_id)
+            ? <i className="fas fa-heart" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
+            : <i className="far fa-heart" onClick={()=>addToWatchLaterVideos(value, dispatch)}></i>}
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>

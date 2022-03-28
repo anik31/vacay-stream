@@ -21,7 +21,7 @@ export function Navbar(){
                 {[{linkTo:"/videos", linkFor:"Explore"},
                 {linkTo:"/playlists", linkFor:"Playlists"},
                 {linkTo:"/liked", linkFor:"Liked"},
-                {linkTo:"/watch-later", linkFor:"Watch Later"}].map(({linkTo, linkFor}) => 
+                {linkTo:"/watchlater", linkFor:"Watch Later"}].map(({linkTo, linkFor}) => 
                 <li key={linkTo}><Link to={linkTo} className="btn btn-secondary-link">{linkFor}</Link></li>)}
             </ul>
         </nav>

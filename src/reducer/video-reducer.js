@@ -8,5 +8,7 @@ export function videoReducer(state, action){
             return {...state, categoryFilter: action.payload};
         case "SET_LIKED_VIDEOS":
             return {...state, likedVideos: action.payload};
+        case "SET_WATCH_LATER_VIDEOS":
+            return {...state, watchLaterVideos: action.payload};
     }
 }

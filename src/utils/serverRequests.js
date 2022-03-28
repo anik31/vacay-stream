@@ -45,3 +45,49 @@ export const removeFromLikedVideos = async(id, dispatch) => {
         console.log(err);
     }
 }
+
+export const getWatchLaterVideos = async(dispatch) => {
+  try{
+    const {status, data} = await axios({
+      method: "get",
+      url: "/api/user/watchlater",
+      headers: {authorization: localStorage.getItem("encodedToken")}
+    });
+    if(status===200){
+      dispatch({type:"SET_WATCH_LATER_VIDEOS", payload: data.watchlater})
+    }
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export const addToWatchLaterVideos = async(postData, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "post",
+        url: "/api/user/watchlater",
+        data: {video: postData},
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===201){
+        dispatch({type:"SET_WATCH_LATER_VIDEOS", payload: data.watchlater})
+      }
+  }catch(err){
+      console.log(err);
+  }
+}
+
+export const removeFromWatchLaterVideos = async(id, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "delete",
+        url: `/api/user/watchlater/${id}`,
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===200){
+        dispatch({type:"SET_WATCH_LATER_VIDEOS", payload: data.watchlater})
+      }
+  }catch(err){
+      console.log(err);
+  }
+}
