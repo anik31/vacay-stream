@@ -40,7 +40,7 @@
     height: 2rem;
 }
 
-.card-vertical .fa-heart{
+.card-vertical .fa-heart, .card-vertical .fa-trash{
     background-color: white;
     border-radius: 50%;
     padding: 0.5rem;
@@ -62,4 +62,11 @@
 
 .card-vertical .fas.fa-heart{
     color: #ff4343;
+}
+
+.card .fa-trash{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
 }

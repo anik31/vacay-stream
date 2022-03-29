@@ -91,3 +91,64 @@ export const removeFromWatchLaterVideos = async(id, dispatch) => {
       console.log(err);
   }
 }
+
+export const getWatchHistory = async(dispatch) => {
+  try{
+    const {status, data} = await axios({
+      method: "get",
+      url: "/api/user/history",
+      headers: {authorization: localStorage.getItem("encodedToken")}
+    });
+    if(status===200){
+      dispatch({type:"SET_HISTORY", payload: data.history})
+    }
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export const addToWatchHistory = async(postData, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "post",
+        url: "/api/user/history",
+        data: {video: postData},
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===201){
+        dispatch({type:"SET_HISTORY", payload: data.history})
+      }
+  }catch(err){
+      console.log(err);
+  }
+}
+
+export const removeFromWatchHistory = async(id, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "delete",
+        url: `/api/user/history/${id}`,
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===200){
+        dispatch({type:"SET_HISTORY", payload: data.history})
+      }
+  }catch(err){
+      console.log(err);
+  }
+}
+
+export const removeAllWatchHistory = async(dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "delete",
+        url: `/api/user/history/all`,
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===200){
+        dispatch({type:"SET_HISTORY", payload: data.history})
+      }
+  }catch(err){
+      console.log(err);
+  }
+}

@@ -8,7 +8,8 @@ const initialState = {
     categories: [],
     categoryFilter: "All",
     likedVideos: [],
-    watchLaterVideos: []
+    watchLaterVideos: [],
+    history: []
 }
 
 const VideoProvider = ({children}) => {
