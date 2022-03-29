@@ -22,3 +22,11 @@ button{
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
     justify-items: center;    
 }
+
+.videos-card-wrapper{
+    margin: 2rem 0;
+}
+
+.videos-card-wrapper h2{
+    text-align: center;
+}
