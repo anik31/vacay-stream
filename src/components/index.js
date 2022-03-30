@@ -1,2 +1,3 @@
-export {VideoCard} from "./VideoCard/VideoCard";
+export {VideoCard} from "./Cards/VideoCard";
+export {HistoryCard} from "./Cards/HistoryCard";
 export {Navbar} from "./Navbar/Navbar";

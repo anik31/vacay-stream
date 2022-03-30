@@ -2,7 +2,8 @@ import "./video-card.css"
 import {useVideos} from "../../context/video-context";
 import { 
     addToLikedVideos, removeFromLikedVideos, 
-    addToWatchLaterVideos, removeFromWatchLaterVideos
+    addToWatchLaterVideos, removeFromWatchLaterVideos,
+    addToWatchHistory
 } from "../../utils";
 
 export function VideoCard({value}){
@@ -33,7 +34,7 @@ export function VideoCard({value}){
                     </div>
                 </div>
             </div>
-            <button className="btn btn-primary">Watch Now</button>
+            <button className="btn btn-primary" onClick={()=>addToWatchHistory(value, dispatch)}>Watch Now</button>
         </div>
     );
 }
