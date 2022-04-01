@@ -1,0 +1,21 @@
+.playlist-card{
+    background-color: var(--primary-color-50);
+    width: 15rem;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--lynx-gray-color);
+    cursor: pointer;
+}
+
+.playlist-cards-container{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4,1fr);
+    justify-items: center;
+    margin-top: 2rem;
+}

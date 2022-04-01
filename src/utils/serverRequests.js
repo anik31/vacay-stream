@@ -152,3 +152,20 @@ export const removeAllWatchHistory = async(dispatch) => {
       console.log(err);
   }
 }
+
+export const addNewPlaylist = async(playlistTitle, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "post",
+        url: "/api/user/playlists",
+        data: {playlist: {title:playlistTitle, description:""}},
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===201){
+        dispatch({type:"SET_PLAYLIST", payload: data.playlists})
+        console.log(data.playlists);
+      }
+  }catch(err){
+      console.log(err);
+  }
+}

@@ -1,0 +1,16 @@
+.modal-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(234, 234, 236,0.3);
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper .modal{
+    border: 1px solid var(--lynx-gray-color);
+}

@@ -12,10 +12,9 @@ export function VideoCard({value}){
 
     return (
         <div className="card card-vertical">
-            <i className="far fa-heart"></i>
             {state.watchLaterVideos.find(item=>item._id===_id)
-            ? <i className="fas fa-heart" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
-            : <i className="far fa-heart" onClick={()=>addToWatchLaterVideos(value, dispatch)}></i>}
+            ? <i className="fas fa-heart" title="Remove from watch later" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
+            : <i className="far fa-heart" title="Add to watch later" onClick={()=>addToWatchLaterVideos(value, dispatch)}></i>}
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>
@@ -27,10 +26,10 @@ export function VideoCard({value}){
                     <div className="btn-like-dislike-wrapper">
                         <button>
                         {state.likedVideos.find(item=>item._id===_id)
-                        ? <i className="fas fa-thumbs-up" onClick={()=>removeFromLikedVideos(_id, dispatch)} ></i>
-                        : <i className="far fa-thumbs-up" onClick={()=>addToLikedVideos(value, dispatch)}></i>}
+                        ? <i className="fas fa-thumbs-up" title="Remove from liked videos" onClick={()=>removeFromLikedVideos(_id, dispatch)} ></i>
+                        : <i className="far fa-thumbs-up" title="Add to liked videos" onClick={()=>addToLikedVideos(value, dispatch)}></i>}
                         </button>
-                        <button><i className="far fa-thumbs-down"></i></button>
+                        <button><i class="far fa-bookmark" title="Save to playlist"></i></button>
                     </div>
                 </div>
             </div>

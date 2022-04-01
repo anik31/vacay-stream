@@ -10,7 +10,7 @@ export function WatchLaterCard({value}){
 
     return (
         <div className="card card-vertical">
-            <i className="fas fa-heart" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
+            <i className="fas fa-trash" title="Remove" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>

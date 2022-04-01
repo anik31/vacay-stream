@@ -8,7 +8,7 @@ export function HistoryCard({value}){
 
     return (
         <div className="card card-vertical">
-            <i className="fas fa-trash" onClick={()=>removeFromWatchHistory(_id, dispatch)} ></i>
+            <i className="fas fa-trash" title="Remove" onClick={()=>removeFromWatchHistory(_id, dispatch)} ></i>
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>
