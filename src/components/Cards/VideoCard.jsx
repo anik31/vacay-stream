@@ -8,9 +8,10 @@ import {
 
 export function VideoCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
-    const {state, dispatch} = useVideos();
+    const {state, dispatch, setModalData, setIsPlaylistModalVisible} = useVideos();
 
     return (
+        <>
         <div className="card card-vertical">
             {state.watchLaterVideos.find(item=>item._id===_id)
             ? <i className="fas fa-heart" title="Remove from watch later" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
@@ -29,11 +30,15 @@ export function VideoCard({value}){
                         ? <i className="fas fa-thumbs-up" title="Remove from liked videos" onClick={()=>removeFromLikedVideos(_id, dispatch)} ></i>
                         : <i className="far fa-thumbs-up" title="Add to liked videos" onClick={()=>addToLikedVideos(value, dispatch)}></i>}
                         </button>
-                        <button><i class="far fa-bookmark" title="Save to playlist"></i></button>
+                        <button onClick={()=>{
+                            setModalData(value)
+                            setIsPlaylistModalVisible(true)
+                            }}><i className="far fa-bookmark" title="Save to playlist"></i></button>
                     </div>
                 </div>
             </div>
             <button className="btn btn-primary" onClick={()=>addToWatchHistory(value, dispatch)}>Watch Now</button>
         </div>
+        </>
     );
 }

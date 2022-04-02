@@ -1,22 +1,28 @@
 import "./PlaylistModal.css";
-import { useState } from "react";
 import {useVideos} from "../../context/video-context";
-import { addNewPlaylist } from "../../utils";
+import { addVideoToPlaylist, removeVideoFromPlaylist } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
-export function PlaylistModal({setIsModalVisible}){
-    const [playlistTitle, setPlaylistTitle] = useState("");
-    const {dispatch} = useVideos();
-
+export function PlaylistModal(){
+    const {state, modalData:value, setIsPlaylistModalVisible, setIsCreateModalVisible, dispatch} = useVideos();
+    const navigate = useNavigate();
+    
     return (
         <div className="modal-wrapper">
-            <output className="modal">
-                <button onClick={()=>setIsModalVisible(false)}><i className="btn-icon fas fa-times"></i></button>
-                <h2>Create New Playlist</h2>
-                <input type="text" placeholder="Playlist title" onChange={e=>setPlaylistTitle(e.target.value)} />
-                <button className="btn btn-primary" onClick={()=>{
-                    addNewPlaylist(playlistTitle, dispatch)
-                    setIsModalVisible(false)
-                    }}>Create Playlist</button>
+            <output className="playlist-modal">
+                <button onClick={()=>setIsPlaylistModalVisible(false)}><i className="btn-icon fas fa-times"></i></button>
+                <h3>Save to playlist</h3>
+                <ul>
+                    {state.playlists.length>0 && state.playlists.map(item=><li key={item._id}><label><input 
+                        type="checkbox"
+                        checked={item.videos.find(element=>element._id===value._id)}
+                        onChange={()=>item.videos.find(element=>element._id===value._id)?removeVideoFromPlaylist(item._id, value._id, dispatch):addVideoToPlaylist(item._id, value, dispatch)}
+                    />{item.title}</label></li>)}
+                </ul>
+                {state.playlists.length===0 && <button className="btn btn-primary" onClick={()=>{
+                    navigate("/playlists");
+                    setIsCreateModalVisible(true);
+                }}>Create playlist</button>}
             </output>
         </div>
     );

@@ -3,5 +3,5 @@ export {
     getLikedVideos, addToLikedVideos, removeFromLikedVideos, 
     getWatchLaterVideos, addToWatchLaterVideos, removeFromWatchLaterVideos,
     getWatchHistory, addToWatchHistory, removeFromWatchHistory, removeAllWatchHistory,
-    addNewPlaylist
+    addNewPlaylist, removePlaylist, addVideoToPlaylist, removeVideoFromPlaylist
 } from "./serverRequests";
