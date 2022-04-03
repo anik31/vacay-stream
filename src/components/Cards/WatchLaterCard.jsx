@@ -1,14 +1,16 @@
 import "./card.css"
 import {useVideos} from "../../context/video-context";
-import { removeFromWatchHistory, addToWatchHistory } from "../../utils";
+import { 
+    removeFromWatchLaterVideos, addToWatchHistory
+} from "../../utils";
 
-export function HistoryCard({value}){
+export function WatchLaterCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
     const {dispatch} = useVideos();
 
     return (
         <div className="card card-vertical">
-            <i className="fas fa-trash" title="Remove" onClick={()=>removeFromWatchHistory(_id, dispatch)} ></i>
+            <i className="fas fa-trash" title="Remove" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>

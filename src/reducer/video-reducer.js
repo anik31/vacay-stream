@@ -12,5 +12,9 @@ export function videoReducer(state, action){
             return {...state, watchLaterVideos: action.payload};
         case "SET_HISTORY":
             return {...state, history: action.payload};
+        case "SET_PLAYLIST":
+            return {...state, playlists: action.payload};
+        case "SET_SINGLE_PLAYLIST":
+            return {...state, playlists: [...state.playlists].map(item=>item._id===action.payload._id?action.payload:item)};    
     }
 }

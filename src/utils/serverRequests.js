@@ -152,3 +152,65 @@ export const removeAllWatchHistory = async(dispatch) => {
       console.log(err);
   }
 }
+
+export const addNewPlaylist = async(playlistTitle, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "post",
+        url: "/api/user/playlists",
+        data: {playlist: {title:playlistTitle, description:""}},
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===201){
+        dispatch({type:"SET_PLAYLIST", payload: data.playlists});
+      }
+  }catch(err){
+      console.log(err);
+  }
+}
+
+export const removePlaylist = async(playlistId, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "delete",
+        url: `/api/user/playlists/${playlistId}`,
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===200){
+        dispatch({type:"SET_PLAYLIST", payload: data.playlists});
+      }
+  }catch(err){
+      console.log(err);
+  }
+}
+
+export const addVideoToPlaylist = async(playlistId, postData, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "post",
+        url: `/api/user/playlists/${playlistId}`,
+        data: {video: postData},
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===201){
+        dispatch({type:"SET_SINGLE_PLAYLIST", payload: data.playlist});
+      }
+  }catch(err){
+      console.log(err);
+  }
+}
+
+export const removeVideoFromPlaylist = async(playlistId, videoId, dispatch) => {
+  try{
+      const {status, data} = await axios({
+        method: "delete",
+        url: `/api/user/playlists/${playlistId}/${videoId}`,
+        headers: {authorization: localStorage.getItem("encodedToken")}
+      });
+      if(status===200){
+        dispatch({type:"SET_SINGLE_PLAYLIST", payload: data.playlist});
+      }
+  }catch(err){
+      console.log(err);
+  }
+}

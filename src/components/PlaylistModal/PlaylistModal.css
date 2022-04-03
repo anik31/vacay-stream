@@ -1,0 +1,58 @@
+:root{
+    --modal-background: rgb(234, 234, 236,0.3);
+}
+
+.modal{
+    width: 25rem;
+    height: 13rem;
+}
+
+.modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--modal-background);
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper .modal{
+    border: 1px solid var(--lynx-gray-color);
+}
+
+.playlist-modal{
+    background-color: var(--primary-color-50);
+    border: 1px solid var(--lynx-gray-color);
+    width: 15rem;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.playlist-modal button{
+    float: right;
+}
+
+.playlist-modal button.btn{
+    float: none;
+    margin: 1rem auto;
+}
+
+.playlist-modal ul{
+    list-style: none;
+    margin: 0.5rem 0;
+}
+
+.playlist-modal label{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.playlist-modal li{
+    margin: 0.5rem;
+}

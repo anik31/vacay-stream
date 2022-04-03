@@ -1,7 +1,7 @@
 import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
-import { Home, Videos, LikedVideos, WatchLater, History } from "./pages";
+import { Home, Videos, LikedVideos, WatchLater, History, Playlist, SinglePlaylist } from "./pages";
 import { useAsyncFetch, useLogin } from "./hooks";
 import { Navbar } from "./components";
 import { useEffect } from "react";
@@ -37,6 +37,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/videos" element={<Videos/>} />
+        <Route path="/playlists" element={<Playlist/>} />
+        <Route path="/playlists/:playlistId" element={<SinglePlaylist/>} />
         <Route path="/liked" element={<LikedVideos/>} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/history" element={<History />} />

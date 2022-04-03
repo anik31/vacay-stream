@@ -1,11 +1,11 @@
 import {useVideos} from "../../context/video-context";
-import {VideoCard} from "../../components";
+import {VideoCard, PlaylistModal} from "../../components";
 import "./videos.css";
 import {getFilteredVideos} from "../../utils";
 import { CategoryChips } from "./CategoryChips";
 
 export function Videos(){
-    const {state} = useVideos();
+    const {state, isPlaylistModalVisible} = useVideos();
     const filteredVideos = getFilteredVideos(state.videos, state.categoryFilter);
 
     return (
@@ -16,6 +16,7 @@ export function Videos(){
                 {filteredVideos.map(item=><VideoCard key={item._id} value={item} />)}
                 </div>
             </main>
+            {isPlaylistModalVisible && <PlaylistModal/>}
         </div>        
     );
 }
