@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import {logo} from "../../assets";
 
 export function Navbar(){
     return (
         <header className="header">
         <div className="hamburger-logo-wrapper">
             <button><i className="fas fa-bars"></i></button>
-            <Link to="/"><h2 className="logo">vacay</h2></Link>
+            <Link to="/"><img src={logo} alt="vacay-stream-logo" className="logo" /></Link>
         </div>
         <nav className="hamburger-menu">
             <ul>
