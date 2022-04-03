@@ -1,3 +1,7 @@
+:root{
+    --modal-background: rgb(234, 234, 236,0.3);
+}
+
 .modal{
     width: 25rem;
     height: 13rem;
@@ -9,7 +13,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(234, 234, 236,0.3);
+    background-color: var(--modal-background);
     z-index: 15;
     display: flex;
     justify-content: center;
