@@ -1,5 +1,5 @@
 import {useVideos} from "../../context/video-context";
-import { PlaylistVideoCard } from "../../components";
+import { PageVideoCard } from "../../components";
 import "./playlist.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { removePlaylist } from "../../utils";
@@ -19,7 +19,7 @@ export function SinglePlaylist(){
                 removePlaylist(playlistId, dispatch)
             }}>Delete Playlist</button>
             <div className="video-cards-container">
-            {videos.map(item=><PlaylistVideoCard key={item._id} value={item} playlistId={playlistId} />)}
+            {videos.map(item=><PageVideoCard key={item._id} value={item} />)}
             </div>
         </div>
         {isCreateModalVisible && <CreatePlaylistModal/>}
