@@ -15,7 +15,7 @@ export function PlaylistModal(){
                 <ul>
                     {state.playlists.length>0 && state.playlists.map(item=><li key={item._id}><label><input 
                         type="checkbox"
-                        checked={item.videos.find(element=>element._id===value._id)}
+                        checked={item.videos.find(element=>element._id===value._id)?true:false}
                         onChange={()=>item.videos.find(element=>element._id===value._id)?removeVideoFromPlaylist(item._id, value._id, dispatch):addVideoToPlaylist(item._id, value, dispatch)}
                     />{item.title}</label></li>)}
                 </ul>
