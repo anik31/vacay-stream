@@ -1,14 +1,14 @@
 import { PageVideoCard } from "../../components";
-import {useVideos} from "../../context/video-context";
+import {useWatchLater} from "../../context";
 
 export function WatchLater(){
-    const {state} = useVideos();
+    const {watchLaterState} = useWatchLater();
     
     return (
         <div className="videos-card-wrapper">
-            <h2>Watch Later Videos ({state.watchLaterVideos.length})</h2>
+            <h2>Watch Later Videos ({watchLaterState.length})</h2>
             <div className="video-cards-container">
-            {state.watchLaterVideos.map(item=><PageVideoCard key={item._id} value={item} />)}
+            {watchLaterState.map(item=><PageVideoCard key={item._id} value={item} />)}
             </div>
         </div>
     );

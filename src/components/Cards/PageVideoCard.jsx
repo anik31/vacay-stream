@@ -1,29 +1,25 @@
 import "./card.css"
-import {useVideos} from "../../context/video-context";
-import { 
-    removeFromWatchHistory, addToWatchHistory, 
-    removeFromLikedVideos, removeFromWatchLaterVideos, 
-    removeVideoFromPlaylist 
-} from "../../utils";
+import {useHistory, useLike, usePlaylist, useWatchLater} from "../../context";
 import {useLocation, useParams} from "react-router-dom";
 
 export function PageVideoCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
-    const {dispatch} = useVideos();
     const {pathname} = useLocation();
     const {playlistId} = useParams();
-
-    console.log(pathname, playlistId);
+    const {addToWatchHistory, removeFromWatchHistory} = useHistory();
+    const {removeFromLikedVideos} = useLike();
+    const {removeFromWatchLaterVideos} = useWatchLater();
+    const {removeVideoFromPlaylist} = usePlaylist();
 
     const deleteBtnHandler = () => {
         if(pathname === "/history"){
-            removeFromWatchHistory(_id, dispatch);
+            removeFromWatchHistory(_id);
         }else if(pathname === "/liked"){
-            removeFromLikedVideos(_id, dispatch);
+            removeFromLikedVideos(_id);
         }else if(pathname === "/watchlater"){
-            removeFromWatchLaterVideos(_id, dispatch);
+            removeFromWatchLaterVideos(_id);
         }else{
-            removeVideoFromPlaylist(playlistId, _id, dispatch);
+            removeVideoFromPlaylist(playlistId, _id);
         }
     }
 
@@ -40,7 +36,7 @@ export function PageVideoCard({value}){
                     <span className="text-gray text-sm">{uploaded} ago</span>
                 </div>
             </div>
-            <button className="btn btn-primary" onClick={()=>addToWatchHistory(value, dispatch)}>Watch Now</button>
+            <button className="btn btn-primary" onClick={()=>addToWatchHistory(value)}>Watch Now</button>
         </div>
     );
 }

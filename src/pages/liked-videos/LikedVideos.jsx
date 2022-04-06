@@ -1,14 +1,14 @@
 import { PageVideoCard } from "../../components";
-import {useVideos} from "../../context/video-context";
+import {useLike} from "../../context";
 
 export function LikedVideos(){
-    const {state} = useVideos();
-    
+    const {likeState} = useLike();
+
     return (
         <div className="videos-card-wrapper">
-            <h2>Liked Videos ({state.likedVideos.length})</h2>
+            <h2>Liked Videos ({likeState.length})</h2>
             <div className="video-cards-container">
-            {state.likedVideos.map(item=><PageVideoCard key={item._id} value={item} />)}
+            {likeState.map(item=><PageVideoCard key={item._id} value={item} />)}
             </div>
         </div>
     );

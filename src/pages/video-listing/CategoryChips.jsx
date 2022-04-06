@@ -1,19 +1,20 @@
-import { useVideos } from "../../context/video-context";
+import { useVideo } from "../../context";
 
 export function CategoryChips(){
-    const {state, dispatch} = useVideos();
+    const {videoState, videoDispatch} = useVideo();
+
     return (
         <div className="category-chips">
             <button 
-            onClick={()=>dispatch({type:"FILTER_BY_CATEGORIES", payload:"All"})} 
-            className={`btn ${state.categoryFilter==="All"?"btn-primary":"btn-primary-outline"}`}
+            onClick={()=>videoDispatch({type:"FILTER_BY_CATEGORIES", payload:"All"})} 
+            className={`btn ${videoState.categoryFilter==="All"?"btn-primary":"btn-primary-outline"}`}
             >All</button>
             
-            {state.categories.map(item=>
+            {videoState.categories.map(item=>
             <button 
             key={item._id} 
-            onClick={()=>dispatch({type:"FILTER_BY_CATEGORIES", payload:item.categoryName})} 
-            className={`btn ${state.categoryFilter===item.categoryName?"btn-primary":"btn-primary-outline"}`}
+            onClick={()=>videoDispatch({type:"FILTER_BY_CATEGORIES", payload:item.categoryName})} 
+            className={`btn ${videoState.categoryFilter===item.categoryName?"btn-primary":"btn-primary-outline"}`}
             >{item.categoryName}</button> )}
         </div>
     );

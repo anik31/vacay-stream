@@ -2,33 +2,27 @@ import "./styles.css";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 import { Home, Videos, LikedVideos, WatchLater, History, Playlist, SinglePlaylist, Page404 } from "./pages";
-import { useAsyncFetch, useLogin } from "./hooks";
+import { useLogin } from "./hooks";
 import { Navbar } from "./components";
 import { useEffect } from "react";
-import { getLikedVideos, getWatchHistory, getWatchLaterVideos } from "./utils";
-import { useVideos } from "./context/video-context";
+import { useVideo, useLike, useHistory, usePlaylist, useWatchLater } from "./context";
 
 function App() {
-  const {dispatch} = useVideos();
-  
-  useAsyncFetch({
-    url: "/api/videos",
-    dispatchType:"SET_VIDEOS",
-    dispatchPayload:"videos"
-  })
-  
-  useAsyncFetch({
-    url: "/api/categories",
-    dispatchType:"SET_CATEGORIES",
-    dispatchPayload:"categories"
-  })
+  const {getVideos, getCategories} = useVideo();
+  const {getLikedVideos} = useLike();
+  const {getWatchLaterVideos} = useWatchLater();
+  const {getWatchHistory} = useHistory();
+  const {getPlaylists} = usePlaylist();
   
   useLogin();
 
   useEffect(()=>{
-    getLikedVideos(dispatch);
-    getWatchLaterVideos(dispatch);
-    getWatchHistory(dispatch);
+    getVideos();
+    getCategories();
+    getLikedVideos();
+    getWatchLaterVideos();
+    getWatchHistory();
+    getPlaylists();
   },[])
 
   return (

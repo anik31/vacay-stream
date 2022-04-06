@@ -1,21 +1,19 @@
 import "./card.css"
-import {useVideos} from "../../context/video-context";
-import { 
-    addToLikedVideos, removeFromLikedVideos, 
-    addToWatchLaterVideos, removeFromWatchLaterVideos,
-    addToWatchHistory
-} from "../../utils";
+import {useHistory, useLike, usePlaylist, useWatchLater} from "../../context";
 
 export function VideoCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
-    const {state, dispatch, setModalData, setIsPlaylistModalVisible} = useVideos();
+    const {watchLaterState, addToWatchLaterVideos, removeFromWatchLaterVideos} = useWatchLater();
+    const {likeState, addToLikedVideos, removeFromLikedVideos} = useLike();
+    const {addToWatchHistory} = useHistory();
+    const {setModalData, setIsPlaylistModalVisible} = usePlaylist();
 
     return (
         <>
         <div className="card card-vertical">
-            {state.watchLaterVideos.find(item=>item._id===_id)
-            ? <i className="fas fa-heart" title="Remove from watch later" onClick={()=>removeFromWatchLaterVideos(_id, dispatch)} ></i>
-            : <i className="far fa-heart" title="Add to watch later" onClick={()=>addToWatchLaterVideos(value, dispatch)}></i>}
+            {watchLaterState.find(item=>item._id===_id)
+            ? <i className="fas fa-heart" title="Remove from watch later" onClick={()=>removeFromWatchLaterVideos(_id)} ></i>
+            : <i className="far fa-heart" title="Add to watch later" onClick={()=>addToWatchLaterVideos(value)}></i>}
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>
@@ -26,9 +24,9 @@ export function VideoCard({value}){
                     <span className="text-gray text-sm">{uploaded} ago</span>
                     <div className="btn-like-dislike-wrapper">
                         <button>
-                        {state.likedVideos.find(item=>item._id===_id)
-                        ? <i className="fas fa-thumbs-up" title="Remove from liked videos" onClick={()=>removeFromLikedVideos(_id, dispatch)} ></i>
-                        : <i className="far fa-thumbs-up" title="Add to liked videos" onClick={()=>addToLikedVideos(value, dispatch)}></i>}
+                        {likeState.find(item=>item._id===_id)
+                        ? <i className="fas fa-thumbs-up" title="Remove from liked videos" onClick={()=>removeFromLikedVideos(_id)} ></i>
+                        : <i className="far fa-thumbs-up" title="Add to liked videos" onClick={()=>addToLikedVideos(value)}></i>}
                         </button>
                         <button onClick={()=>{
                             setModalData(value)
@@ -37,7 +35,7 @@ export function VideoCard({value}){
                     </div>
                 </div>
             </div>
-            <button className="btn btn-primary" onClick={()=>addToWatchHistory(value, dispatch)}>Watch Now</button>
+            <button className="btn btn-primary" onClick={()=>addToWatchHistory(value)}>Watch Now</button>
         </div>
         </>
     );
