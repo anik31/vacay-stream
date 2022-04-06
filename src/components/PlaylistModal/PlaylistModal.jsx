@@ -1,12 +1,12 @@
 import "./PlaylistModal.css";
 import {usePlaylist} from "../../context";
-import { useNavigate } from "react-router-dom";
+import {useState} from "react";
 
 export function PlaylistModal(){
-    const navigate = useNavigate();
+    const [playlistTitle, setPlaylistTitle] = useState("");
     const {modalData: value, playlistState,
-        setIsCreateModalVisible, setIsPlaylistModalVisible, 
-        addVideoToPlaylist, removeVideoFromPlaylist} = usePlaylist();
+        setIsPlaylistModalVisible, 
+        addNewPlaylist, addVideoToPlaylist, removeVideoFromPlaylist} = usePlaylist();
     
     return (
         <div className="modal-wrapper">
@@ -20,10 +20,14 @@ export function PlaylistModal(){
                         onChange={()=>item.videos.find(element=>element._id===value._id)?removeVideoFromPlaylist(item._id, value._id):addVideoToPlaylist(item._id, value)}
                     />{item.title}</label></li>)}
                 </ul>
-                {playlistState.length===0 && <button className="btn btn-primary" onClick={()=>{
-                    navigate("/playlists");
-                    setIsCreateModalVisible(true);
-                }}>Create playlist</button>}
+                <div className="input-btn-wrapper">
+                    <input type="text" value={playlistTitle} placeholder="Playlist title" 
+                    onChange={(e)=>setPlaylistTitle(e.target.value)} />    
+                    <button className="btn btn-primary" onClick={()=>{
+                        addNewPlaylist(playlistTitle)
+                        setPlaylistTitle("")
+                    }}>Create</button>
+                </div>
             </output>
         </div>
     );

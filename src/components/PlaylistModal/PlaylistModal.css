@@ -36,9 +36,9 @@
     float: right;
 }
 
-.playlist-modal button.btn{
+.playlist-modal .input-btn-wrapper button.btn{
     float: none;
-    margin: 1rem auto;
+    margin: 0 auto;
 }
 
 .playlist-modal ul{
@@ -55,4 +55,10 @@
 
 .playlist-modal li{
     margin: 0.5rem;
+}
+
+.input-btn-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
