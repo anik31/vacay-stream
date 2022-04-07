@@ -1,0 +1,39 @@
+.sidebar{
+    position: sticky;
+    top: 65px;
+    max-height: 90vh;
+}
+
+.sidebar .nav-item{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+@media only screen and (max-width:900px) {
+    .sidebar{
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        height: fit-content;
+        z-index: 20;
+        background-color: white;
+    }
+
+    .sidebar ul{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+    }
+
+    .sidebar .nav-item{
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 0.5rem 0 0.4rem 0;
+    }
+}

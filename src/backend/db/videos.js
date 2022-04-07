@@ -6,7 +6,7 @@
 export const videos = [
   {
     _id: "UykTYYgArbc",
-    title: "Chadar Frozen River Trek Documentary",
+    title: "Chadar Frozen River Trek",
     description:
       "The Ladakh region offers some exceptional topography one of them is the blue Zanskar freezing in time. Walking on this ice Chadar is the adventure of a lifetime.",
     creator: "TrekThe Himalayas",
@@ -35,7 +35,7 @@ export const videos = [
   },
   {
     _id: "qGGlXr0xKpQ",
-    title: "Kuari Pass - Beautiful Trek of Uttarakhand",
+    title: "Kuari Pass Beautiful Trek",
     description:
       "Trek amidst the peaks like Nanda Devi, Dronagiri, Kamet, etc.",
     creator: "Radhika Nomllers",
@@ -49,7 +49,7 @@ export const videos = [
   },
   {
     _id: "oM_9lF4u4_o",
-    title: "Sonprayag to Kedarnath Temple, 16km Trekking",
+    title: "Sonprayag to Kedarnath Trekking",
     description:
       "This is the 3rd episode of Kedarnath yatra (Travel series), we have done 16 km trekking from Gaurikund to Kedarnath temple.",
     creator: "Naveen Rawat",
@@ -78,7 +78,7 @@ export const videos = [
   },
   {
     _id: "70WgbWEF3Tk",
-    title: "Myrtle Beach Vacation Travel Guide",
+    title: "Myrtle Beach Vacation Guide",
     description:
       "Myrtle Beach – This jewel in the string of seaside towns that make up the Grand Strand offers its own spin on South Carolina’s coastal charm.",
     creator: "Expedia",
@@ -135,7 +135,7 @@ export const videos = [
   },
   {
     _id: "eAEjFfjO9gg",
-    title: "Mussoorie Hill Station, Uttarakhand",
+    title: "Mussoorie Hill Station",
     description:
       "Mussoorie (Garhwali/Hindi: Masūrī) is a hill station and a municipal board in the Dehradun District of the northern Indian state of Uttarakhand.",
     creator: "IndiaTravelVideos",
@@ -177,7 +177,7 @@ export const videos = [
   },
   {
     _id: "AfDWRh_tE4c",
-    title: "Top 10 National Parks of India | Jungle Safari",
+    title: "Top 10 National Parks of India",
     description:
       "In this video we will talk about the top 10 national parks of India.",
     creator: "JUNGLE SAFARI",
@@ -191,7 +191,7 @@ export const videos = [
   },
   {
     _id: "VTnhIwRNO_s",
-    title: "Gir National Park - Gir Safari",
+    title: "Gir National Park",
     description:
       "This video is from Gir National Park & Sanctuary, in Sasan Gir, Gujarat, India. To keep the momentum up we decided to say Hello to Indian SIMBA !",
     creator: "Savvy Fernweh",

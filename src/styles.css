@@ -15,6 +15,12 @@ button{
     margin: 2rem 0;
 }
 
+.sidebar-container{
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    min-height: 90vh;
+}
+
 .video-cards-container{
     padding: 2rem;
     display: grid;
@@ -24,7 +30,7 @@ button{
 }
 
 .videos-card-wrapper{
-    margin: 2rem 0;
+    margin: 1.5rem 0 4rem 0;
 }
 
 .videos-card-wrapper h2{
@@ -32,8 +38,7 @@ button{
 }
 
 .videos-card-wrapper .btn-right{
-    margin-left: auto;
-    margin-right: 2rem;
+    margin: 0.5rem 2rem 0.5rem auto;
 }
 
 /* || empty state */
@@ -49,4 +54,20 @@ button{
 
 .container-error-page img{
     max-width: 20rem;
+}
+
+/* || media queries */
+
+@media only screen and (max-width: 900px){
+    .sidebar-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .video-cards-container{
+        padding: 0.5rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(15.3rem, 1fr));
+    }    
 }
