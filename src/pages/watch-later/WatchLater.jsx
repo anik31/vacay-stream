@@ -1,6 +1,5 @@
-import { PageVideoCard } from "../../components";
+import { EmptyVideoPage, PageVideoCard } from "../../components";
 import {useWatchLater} from "../../context";
-import { EmptyWatchLater } from "./EmptyWatchLater";
 
 export function WatchLater(){
     const {watchLaterState} = useWatchLater();
@@ -12,7 +11,7 @@ export function WatchLater(){
             ? <div className="video-cards-container">
                 {watchLaterState.map(item=><PageVideoCard key={item._id} value={item} />)}
             </div>
-            : <EmptyWatchLater/>}
+            : <EmptyVideoPage/>}
         </div>
     );
 }

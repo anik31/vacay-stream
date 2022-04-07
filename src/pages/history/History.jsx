@@ -1,6 +1,5 @@
-import { PageVideoCard } from "../../components";
+import { EmptyVideoPage, PageVideoCard } from "../../components";
 import {useHistory} from "../../context";
-import { EmptyHistory } from "./EmptyHistory";
 
 export function History(){
     const {historyState, removeAllWatchHistory} = useHistory();
@@ -13,7 +12,7 @@ export function History(){
             ? <div className="video-cards-container">
                 {historyState.map(item=><PageVideoCard key={item._id} value={item} />)}
             </div>
-            : <EmptyHistory/>}
+            : <EmptyVideoPage/>}
         </div>
     );
 }

@@ -1,6 +1,5 @@
-import { PageVideoCard } from "../../components";
+import { EmptyVideoPage, PageVideoCard } from "../../components";
 import {useLike} from "../../context";
-import { EmptyLiked } from "./EmptyLiked";
 
 export function LikedVideos(){
     const {likeState} = useLike();
@@ -12,7 +11,7 @@ export function LikedVideos(){
             ? <div className="video-cards-container">
                 {likeState.map(item=><PageVideoCard key={item._id} value={item} />)}
             </div>
-            : <EmptyLiked/>}
+            : <EmptyVideoPage/>}
         </div>
     );
 }

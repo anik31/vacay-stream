@@ -1,8 +1,7 @@
 import {usePlaylist} from "../../context";
-import { PageVideoCard } from "../../components";
+import { EmptyVideoPage, PageVideoCard } from "../../components";
 import "./playlist.css";
 import { useParams, useNavigate } from "react-router-dom";
-import { EmptySinglePlaylist } from "./EmptySinglePlaylist";
 
 export function SinglePlaylist(){
     const {playlistId} = useParams();
@@ -22,7 +21,7 @@ export function SinglePlaylist(){
             ? <div className="video-cards-container">
                 {videos.map(item=><PageVideoCard key={item._id} value={item} />)}
             </div>
-            : <EmptySinglePlaylist/>}
+            : <EmptyVideoPage/>}
         </div>
         </>
     );
