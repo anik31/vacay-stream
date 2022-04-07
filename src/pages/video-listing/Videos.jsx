@@ -1,12 +1,13 @@
-import {useVideos} from "../../context/video-context";
+import {usePlaylist, useVideo} from "../../context";
 import {VideoCard, PlaylistModal} from "../../components";
 import "./videos.css";
 import {getFilteredVideos} from "../../utils";
 import { CategoryChips } from "./CategoryChips";
 
 export function Videos(){
-    const {state, isPlaylistModalVisible} = useVideos();
-    const filteredVideos = getFilteredVideos(state.videos, state.categoryFilter);
+    const {videoState} = useVideo();
+    const {isPlaylistModalVisible} = usePlaylist();
+    const filteredVideos = getFilteredVideos(videoState.videos, videoState.categoryFilter);
 
     return (
         <div className="video-page-container">

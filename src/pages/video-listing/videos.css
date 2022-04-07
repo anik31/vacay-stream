@@ -1,6 +1,6 @@
 /* products listing */
 .video-page-container{
-    margin-top: 2rem;
+    margin: 1rem 0 4rem 0;
 }
 
 .category-chips{
@@ -12,4 +12,23 @@
 .category-chips .btn{
     border-radius: 2rem;
     font-size: 1.1rem;
+}
+
+/* || media queries */
+
+@media only screen and (max-width: 640px){
+    .category-chips{
+        margin-left: 2rem;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .category-chips .btn{
+        font-size: 1rem;
+    }
+
+    .category-chips{
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
 }

@@ -1,12 +1,12 @@
 import "./home.css";
 import { Link } from "react-router-dom";
 import { VideoCard } from "../../components";
-import { useVideos } from "../../context/video-context";
+import { useVideo } from "../../context";
 import { CategoryCard } from "./CategoryCard";
 import {hero} from "../../assets";
 
 export function Home(){
-    const {state} = useVideos();
+    const {videoState} = useVideo();
 
     return (
         <main className="landing">
@@ -24,14 +24,16 @@ export function Home(){
             <section>
                 <h3 className="page-title">Must Watch Videos</h3>
                 <div className="video-cards-container">
-                    { state.videos.length !== 0 && state.videos.filter(item=> item.mustWatch).map(item=><VideoCard key={item._id} value={item} />)}
+                    { videoState.videos.length !== 0 
+                    && videoState.videos.filter(item=> item.mustWatch).map(item=><VideoCard key={item._id} value={item} />)}
                 </div>        
             </section>
 
             <section className="categories">
                 <h3 className="page-title">Categories</h3>
                 <div className="categories-container">
-                    { state.categories.length !== 0 && state.categories.map(item=><CategoryCard key={item._id} value={item} />)}
+                    { videoState.categories.length !== 0 
+                    && videoState.categories.map(item=><CategoryCard key={item._id} value={item} />)}
                 </div>
             </section>
         </main>

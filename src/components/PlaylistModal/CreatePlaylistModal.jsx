@@ -1,11 +1,10 @@
 import "./PlaylistModal.css";
 import { useState } from "react";
-import {useVideos} from "../../context/video-context";
-import { addNewPlaylist } from "../../utils";
+import {usePlaylist} from "../../context";
 
 export function CreatePlaylistModal(){
     const [playlistTitle, setPlaylistTitle] = useState("");
-    const {dispatch, setIsCreateModalVisible} = useVideos();
+    const {setIsCreateModalVisible, addNewPlaylist} = usePlaylist();
 
     return (
         <div className="modal-wrapper">
@@ -14,7 +13,7 @@ export function CreatePlaylistModal(){
                 <h2>Create New Playlist</h2>
                 <input type="text" placeholder="Playlist title" onChange={e=>setPlaylistTitle(e.target.value)} />
                 <button className="btn btn-primary" onClick={()=>{
-                    addNewPlaylist(playlistTitle, dispatch)
+                    addNewPlaylist(playlistTitle)
                     setIsCreateModalVisible(false)
                 }}>Create Playlist</button>
             </output>

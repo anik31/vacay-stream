@@ -70,3 +70,29 @@
     right: 1rem;
     cursor: pointer;
 }
+
+/* || media queries */
+
+@media only screen and (max-width: 520px){
+    .card-content{
+        padding: 0.3rem;
+    }
+    
+    .card-vertical{
+        width: 16rem;
+        height: 15rem;
+    }
+    
+    .card-vertical img{
+        height: 8rem;
+    }
+    
+    .card-vertical .btn{
+        height: 1.7rem;
+        font-size: 1rem;
+    }
+    
+    .card-title{
+        width: 27ch;
+    }
+}

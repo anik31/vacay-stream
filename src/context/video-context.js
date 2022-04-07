@@ -1,31 +1,56 @@
-import {useState, createContext, useContext, useReducer} from "react";
-import {videoReducer} from "../reducer/video-reducer";
+import {createContext, useContext, useReducer} from "react";
+import {videoReducer} from "../reducer";
+import axios from "axios";
 
 const VideoContext = createContext(null);
 
 const initialState = {
     videos: [],
     categories: [],
-    categoryFilter: "All",
-    likedVideos: [],
-    watchLaterVideos: [],
-    history: [],
-    playlists: []
+    categoryFilter: "All"
 }
 
 const VideoProvider = ({children}) => {
-    const [state, dispatch] = useReducer(videoReducer, initialState);
-    const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
-    const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
-    const [modalData, setModalData] = useState({});
+    const [videoState, videoDispatch] = useReducer(videoReducer, initialState);
+    
+    const getVideos = async() => {
+        try{
+            const {status, data} = await axios({
+                method: "get",
+                url: "/api/videos"
+            });
+            if(status===200){
+                videoDispatch({type:"SET_VIDEOS", payload: data.videos})
+            }
+        }catch(err){
+            console.error(err);
+        }
+    }
+
+    const getCategories = async() => {
+        try{
+            const {status, data} = await axios({
+                method: "get",
+                url: "/api/categories"
+            });
+            if(status===200){
+                videoDispatch({type:"SET_CATEGORIES", payload: data.categories})
+            }
+        }catch(err){
+            console.error(err);
+        }
+    }
 
     return (
-        <VideoContext.Provider value={{state, dispatch, modalData, setModalData, isCreateModalVisible, setIsCreateModalVisible, isPlaylistModalVisible, setIsPlaylistModalVisible}}>
+        <VideoContext.Provider value={{
+            videoState, videoDispatch,
+            getVideos, getCategories
+        }}>
             {children}
         </VideoContext.Provider>
     );
 }
 
-const useVideos = () => useContext(VideoContext);
+const useVideo = () => useContext(VideoContext);
 
-export {useVideos, VideoProvider};
+export {useVideo, VideoProvider};
