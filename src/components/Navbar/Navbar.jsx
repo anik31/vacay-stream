@@ -34,7 +34,9 @@ export function Navbar(){
                 {[{linkTo:"/", linkFor:"Home"},
                 {linkTo:"/videos", linkFor:"Explore"}].map(({linkTo, linkFor}) => 
                 <li key={linkTo}><NavLink style={getActiveStyle} to={linkTo} className="btn btn-secondary-link">{linkFor}</NavLink></li>)}
-                <li><Link to="/login" className="btn btn-primary small-screen-login">Login</Link></li>
+                <li>{!isLoggedIn
+                    ? <Link to="/login" className="btn btn-primary small-screen-login">Login</Link>
+                    : <button className="btn btn-primary small-screen-login" onClick={logoutHandler}>Logout</button>}</li>
             </ul>
         </nav>
         <div className="search-box">
