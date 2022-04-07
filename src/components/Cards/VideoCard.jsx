@@ -1,5 +1,6 @@
 import "./card.css"
-import {useHistory, useLike, usePlaylist, useWatchLater} from "../../context";
+import {useAuth, useHistory, useLike, usePlaylist, useWatchLater} from "../../context";
+import { useNavigate } from "react-router-dom";
 
 export function VideoCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
@@ -7,13 +8,15 @@ export function VideoCard({value}){
     const {likeState, addToLikedVideos, removeFromLikedVideos} = useLike();
     const {addToWatchHistory} = useHistory();
     const {setModalData, setIsPlaylistModalVisible} = usePlaylist();
+    const {isLoggedIn} = useAuth();
+    const navigate = useNavigate();
 
     return (
         <>
         <div className="card card-vertical">
             {watchLaterState.find(item=>item._id===_id)
             ? <i className="fas fa-heart" title="Remove from watch later" onClick={()=>removeFromWatchLaterVideos(_id)} ></i>
-            : <i className="far fa-heart" title="Add to watch later" onClick={()=>addToWatchLaterVideos(value)}></i>}
+            : <i className="far fa-heart" title="Add to watch later" onClick={()=>{isLoggedIn?addToWatchLaterVideos(value):navigate("/login")}}></i>}
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>
@@ -26,16 +29,20 @@ export function VideoCard({value}){
                         <button>
                         {likeState.find(item=>item._id===_id)
                         ? <i className="fas fa-thumbs-up" title="Remove from liked videos" onClick={()=>removeFromLikedVideos(_id)} ></i>
-                        : <i className="far fa-thumbs-up" title="Add to liked videos" onClick={()=>addToLikedVideos(value)}></i>}
+                        : <i className="far fa-thumbs-up" title="Add to liked videos" onClick={()=>{isLoggedIn?addToLikedVideos(value):navigate("/login")}}></i>}
                         </button>
                         <button onClick={()=>{
-                            setModalData(value)
-                            setIsPlaylistModalVisible(true)
+                            if(isLoggedIn){
+                                setModalData(value)
+                                setIsPlaylistModalVisible(true)
+                            }else{
+                                navigate("/login")
+                            }
                             }}><i className="far fa-bookmark" title="Save to playlist"></i></button>
                     </div>
                 </div>
             </div>
-            <button className="btn btn-primary" onClick={()=>addToWatchHistory(value)}>Watch Now</button>
+            <button className="btn btn-primary" onClick={()=>{isLoggedIn?addToWatchHistory(value):navigate("/login")}}>Watch Now</button>
         </div>
         </>
     );

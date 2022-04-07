@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
-import { HistoryProvider, LikeProvider, PlaylistProvider, VideoProvider, WatchLaterProvider } from "./context";
+import { AuthProvider, HistoryProvider, LikeProvider, PlaylistProvider, VideoProvider, WatchLaterProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -11,17 +11,19 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <VideoProvider>
-        <HistoryProvider>
-          <LikeProvider>
-            <PlaylistProvider>
-              <WatchLaterProvider>
-                <App />
-              </WatchLaterProvider>
-            </PlaylistProvider>
-          </LikeProvider>
-        </HistoryProvider>
-      </VideoProvider>
+      <AuthProvider>
+        <VideoProvider>
+          <HistoryProvider>
+            <LikeProvider>
+              <PlaylistProvider>
+                <WatchLaterProvider>
+                  <App />
+                </WatchLaterProvider>
+              </PlaylistProvider>
+            </LikeProvider>
+          </HistoryProvider>
+        </VideoProvider>
+      </AuthProvider>
     </BrowserRouter>  
   </React.StrictMode>,
   document.getElementById("root")

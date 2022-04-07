@@ -1,16 +1,16 @@
 import {useState, createContext, useContext, useReducer} from "react";
 import {playlistReducer} from "../reducer";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 const PlaylistContext = createContext(null);
-
-const encodedToken = localStorage.getItem("encodedToken");
 
 const PlaylistProvider = ({children}) => {
     const [playlistState, playlistDispatch] = useReducer(playlistReducer, []);
     const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
     const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
     const [modalData, setModalData] = useState({});
+    const {token: encodedToken} = useAuth();
 
     const getPlaylists = async() => {
       try{

@@ -5,3 +5,4 @@ export {PlaylistModal} from "./PlaylistModal/PlaylistModal";
 export {PageVideoCard} from "./Cards/PageVideoCard";
 export {Sidebar} from "./Sidebar/Sidebar";
 export {EmptyVideoPage} from "./EmptyVideoPage";
+export {RequireAuth} from "./RequireAuth";
