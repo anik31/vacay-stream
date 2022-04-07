@@ -11,7 +11,7 @@
 Vacay stream is the leading streaming platform to find & showcase creative vlogs and home to India's curious travellers. Vacay stream is publicly hosted on Netlify at https://vacay-stream.netlify.app/.
 
 ## Demo
-![image](https://user-images.githubusercontent.com/56336326/159759413-09d5d913-67a7-4710-b315-dd88a9577349.png)
+https://user-images.githubusercontent.com/56336326/162269043-6b189f47-b42f-4721-8734-566415ed8d90.mp4
 
 ## Features
 - Home page 
@@ -21,6 +21,10 @@ Vacay stream is the leading streaming platform to find & showcase creative vlogs
 - Like/Dislike
 - Watch Later
 - History
+- Authentication
+    - Sign up
+    - Login
+    - Logout
 
 ## Tech stack
 - ReactJS
@@ -34,6 +38,10 @@ Vacay stream is the leading streaming platform to find & showcase creative vlogs
 ```bash
 git clone https://github.com/anik31/vacay-stream.git
 cd vacay-stream
+```
+- Switch to `dev` branch.
+```bash
+git checkout dev
 ```
 - Create an environment variable inside `.env` file in the root of the project.
 ```
