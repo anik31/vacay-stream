@@ -1,13 +1,13 @@
 import {createContext, useContext, useReducer} from "react";
 import {likeReducer} from "../reducer";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 const LikeContext = createContext(null);
 
-const encodedToken = localStorage.getItem("encodedToken");
-
 const LikeProvider = ({children}) => {
     const [likeState, likeDispatch] = useReducer(likeReducer, []);
+    const {token: encodedToken} = useAuth();
 
     const getLikedVideos = async() => {
         try{

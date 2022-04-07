@@ -8,6 +8,13 @@ export function PlaylistModal(){
         setIsPlaylistModalVisible, 
         addNewPlaylist, addVideoToPlaylist, removeVideoFromPlaylist} = usePlaylist();
     
+        const createPlaylistHandler = () => {
+            if(playlistTitle !== ""){
+                addNewPlaylist(playlistTitle);
+                setPlaylistTitle("");
+            }
+        }
+    
     return (
         <div className="modal-wrapper">
             <output className="playlist-modal">
@@ -23,10 +30,7 @@ export function PlaylistModal(){
                 <div className="input-btn-wrapper">
                     <input type="text" value={playlistTitle} placeholder="Playlist title" 
                     onChange={(e)=>setPlaylistTitle(e.target.value)} />    
-                    <button className="btn btn-primary" onClick={()=>{
-                        addNewPlaylist(playlistTitle)
-                        setPlaylistTitle("")
-                    }}>Create</button>
+                    <button className="btn btn-primary" onClick={createPlaylistHandler}>Create</button>
                 </div>
             </output>
         </div>

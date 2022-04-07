@@ -9,10 +9,43 @@ button{
     background: transparent;
 }
 
+input[type="checkbox"]{
+    cursor: pointer;
+}
+
 /* common css */
+
+:root{
+    --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.input input{
+    margin: 0 0.5rem;
+}
+
+.input label{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
 .page-title{
     text-align: center;
     margin: 2rem 0;
+}
+
+.product-cards-container .card{
+    box-shadow: none;
+}
+
+.card{
+    box-shadow: none;
+    border: 1px solid var(--lynx-gray-color);
+}
+
+.card:hover{
+    box-shadow: var(--box-shadow);
 }
 
 .sidebar-container{

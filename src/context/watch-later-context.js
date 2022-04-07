@@ -1,13 +1,13 @@
 import {createContext, useContext, useReducer} from "react";
 import {watchLaterReducer} from "../reducer";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 const WatchLaterContext = createContext(null);
 
-const encodedToken = localStorage.getItem("encodedToken");
-
 const WatchLaterProvider = ({children}) => {
     const [watchLaterState, watchLaterDispatch] = useReducer(watchLaterReducer, []);
+    const {token: encodedToken} = useAuth();
 
     const getWatchLaterVideos = async() => {
         try{

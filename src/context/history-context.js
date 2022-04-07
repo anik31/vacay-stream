@@ -1,13 +1,13 @@
 import {createContext, useContext, useReducer} from "react";
 import {historyReducer} from "../reducer";
 import axios from "axios";
+import { useAuth } from "./auth-context";
 
 const HistoryContext = createContext(null);
 
-const encodedToken = localStorage.getItem("encodedToken");
-
 const HistoryProvider = ({children}) => {
     const [historyState, historyDispatch] = useReducer(historyReducer, []);
+    const {token: encodedToken} = useAuth();
     
     const getWatchHistory = async() => {
         try{
