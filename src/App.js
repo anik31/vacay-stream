@@ -33,10 +33,10 @@ function App() {
     <div className="App">
       <Navbar/>
 
-      <div className={(location.pathname!=="/" && location.pathname!=="login" 
-      && location.pathname!=="signup" && "sidebar-container") || ""}>
-        {location.pathname!=="/" && location.pathname!=="login" 
-        && location.pathname!=="signup" && <Sidebar/>}
+      <div className={(location.pathname!=="/" && location.pathname!=="/login" 
+      && location.pathname!=="/signup" && "sidebar-container") || ""}>
+        {location.pathname!=="/" && location.pathname!=="/login" 
+        && location.pathname!=="/signup" && <Sidebar/>}
 
         <Routes>
           <Route path="/" element={<Home />} />
