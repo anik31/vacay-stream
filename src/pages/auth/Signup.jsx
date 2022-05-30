@@ -23,7 +23,10 @@ export function Signup(){
     const signUpHandler = () => {
         if(!credentials.email || !credentials.password || !credentials.firstName || !credentials.lastName || !confirmPass){
             setErrMsg("Kindly fill all the fields");
-        }else if(credentials.password !== confirmPass){
+        }else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(credentials.email)){
+            setErrMsg("Invalid email");
+        }
+        else if(credentials.password !== confirmPass){
             setErrMsg("Passwords donot match");
         }else{
             signUpUser(credentials);
