@@ -26,6 +26,11 @@ export function Login(){
         }
     }
 
+    const testLoginHandler = () => {
+        setCredentials(testCredentials);
+        loginUser(testCredentials);
+    };
+
     return (
         <div className="grid-container-auth">
             <div className="form box-shadow">
@@ -48,14 +53,8 @@ export function Login(){
                     </button>
                 </div>
             </div>
-            <div className="input-link-grp">
-                <div className="input input-checkbox-radio">
-                    <label><input type="checkbox" />Remember me</label>
-                </div>
-                <button className="btn btn-primary-link">Forgot your Password?</button>
-            </div>
             <button className="btn btn-primary" onClick={loginHandler} >Login</button>
-            <button className="btn btn-primary-outline" onClick={()=>setCredentials(testCredentials)}>Use Guest Credentials</button>
+            <button className="btn btn-primary-outline" onClick={testLoginHandler}>Test Login</button>
             <Link to="/signup" className="btn btn-secondary-icon-text-no-border">Create New Account <i className="fas fa-chevron-right"></i></Link>
             </div>
         </div>
