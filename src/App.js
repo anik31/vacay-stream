@@ -7,6 +7,7 @@ import { Navbar, Sidebar, RequireAuth } from "./components";
 import { useEffect } from "react";
 import { useVideo, useLike, useHistory, usePlaylist, useWatchLater, useAuth } from "./context";
 import {useScrollToTop} from "./hooks/useScrollToTop";
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const {getVideos, getCategories} = useVideo();
@@ -36,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-
+      <Toaster/>
       <div className={(location.pathname!=="/" && location.pathname!=="/login" 
       && location.pathname!=="/signup" && "sidebar-container") || ""}>
         {location.pathname!=="/" && location.pathname!=="/login" 

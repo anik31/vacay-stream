@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer} from "react";
 import {likeReducer} from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import toast from 'react-hot-toast';
 
 const LikeContext = createContext(null);
 
@@ -19,8 +20,8 @@ const LikeProvider = ({children}) => {
             if(status===200){
                 likeDispatch({type:"SET_LIKED_VIDEOS", payload: data.likes})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -35,8 +36,8 @@ const LikeProvider = ({children}) => {
             if(status===201){
               likeDispatch({type:"SET_LIKED_VIDEOS", payload: data.likes})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -50,8 +51,8 @@ const LikeProvider = ({children}) => {
             if(status===200){
               likeDispatch({type:"SET_LIKED_VIDEOS", payload: data.likes})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
     

@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer} from "react";
 import {watchLaterReducer} from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import toast from 'react-hot-toast';
 
 const WatchLaterContext = createContext(null);
 
@@ -19,8 +20,8 @@ const WatchLaterProvider = ({children}) => {
             if(status===200){
                 watchLaterDispatch({type:"SET_WATCH_LATER_VIDEOS", payload: data.watchlater})
             }
-        }catch(err){
-          console.error(err);
+        }catch(error){
+          toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -35,8 +36,8 @@ const WatchLaterProvider = ({children}) => {
             if(status===201){
               watchLaterDispatch({type:"SET_WATCH_LATER_VIDEOS", payload: data.watchlater})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -50,8 +51,8 @@ const WatchLaterProvider = ({children}) => {
             if(status===200){
               watchLaterDispatch({type:"SET_WATCH_LATER_VIDEOS", payload: data.watchlater})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       

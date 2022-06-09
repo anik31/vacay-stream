@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer} from "react";
 import {historyReducer} from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import toast from 'react-hot-toast';
 
 const HistoryContext = createContext(null);
 
@@ -19,8 +20,8 @@ const HistoryProvider = ({children}) => {
             if(status===200){
                 historyDispatch({type:"SET_HISTORY", payload: data.history})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -35,8 +36,8 @@ const HistoryProvider = ({children}) => {
             if(status===201){
               historyDispatch({type:"SET_HISTORY", payload: data.history})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -47,11 +48,12 @@ const HistoryProvider = ({children}) => {
               url: `/api/user/history/${id}`,
               headers: {authorization: encodedToken}
             });
+            toast.success('Removed from history');
             if(status===200){
               historyDispatch({type:"SET_HISTORY", payload: data.history})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -62,11 +64,12 @@ const HistoryProvider = ({children}) => {
               url: `/api/user/history/all`,
               headers: {authorization: encodedToken}
             });
+            toast.success('History cleared');
             if(status===200){
               historyDispatch({type:"SET_HISTORY", payload: data.history})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
