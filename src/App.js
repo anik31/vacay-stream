@@ -6,6 +6,7 @@ import { Home, Videos, LikedVideos, WatchLater, History, Playlist,
 import { Navbar, Sidebar, RequireAuth } from "./components";
 import { useEffect } from "react";
 import { useVideo, useLike, useHistory, usePlaylist, useWatchLater, useAuth } from "./context";
+import {useScrollToTop} from "./hooks/useScrollToTop";
 
 function App() {
   const {getVideos, getCategories} = useVideo();
@@ -15,6 +16,8 @@ function App() {
   const {getPlaylists} = usePlaylist();
   const location = useLocation();
   const {token} = useAuth();
+
+  useScrollToTop();
 
   useEffect(()=>{
     getVideos();
