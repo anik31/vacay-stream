@@ -4,16 +4,15 @@ import {useState} from "react";
 
 export function PlaylistModal(){
     const [playlistTitle, setPlaylistTitle] = useState("");
-    const {modalData: value, playlistState,
-        setIsPlaylistModalVisible, 
-        addNewPlaylist, addVideoToPlaylist, removeVideoFromPlaylist} = usePlaylist();
+    const {modalData: value, playlistState, setIsPlaylistModalVisible, addNewPlaylist, 
+        addVideoToPlaylist, removeVideoFromPlaylist} = usePlaylist();
     
-        const createPlaylistHandler = () => {
-            if(playlistTitle !== ""){
-                addNewPlaylist(playlistTitle);
-                setPlaylistTitle("");
-            }
+    const createPlaylistHandler = () => {
+        if(playlistTitle !== ""){
+            addNewPlaylist(playlistTitle);
+            setPlaylistTitle("");
         }
+    }
     
     return (
         <div className="modal-wrapper">
