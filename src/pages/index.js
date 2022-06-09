@@ -7,3 +7,4 @@ export {Playlist} from "./playlist/Playlist";
 export {SinglePlaylist} from "./playlist/SinglePlaylist";
 export {Page404} from "./404/404";
 export {Login, Signup} from "./auth";
+export {SingleVideo} from "./single-video/SingleVideo";

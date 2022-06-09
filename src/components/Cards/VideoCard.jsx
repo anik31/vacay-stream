@@ -1,6 +1,7 @@
 import "./card.css"
 import {useAuth, useHistory, useLike, usePlaylist, useWatchLater} from "../../context";
 import { useNavigate } from "react-router-dom";
+import { throttle } from "../../utils";
 
 export function VideoCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
@@ -11,12 +12,53 @@ export function VideoCard({value}){
     const {isLoggedIn} = useAuth();
     const navigate = useNavigate();
 
+    const addToWatchLater = () => {
+        isLoggedIn
+        ? addToWatchLaterVideos(value)
+        : navigate("/login");
+    }
+    
+    const removeFromWatchLater = () => {
+        removeFromWatchLaterVideos(_id);
+    }
+
+    const watchLaterHandler = throttle(addToWatchLater,400);
+
+    const removeWatchLaterHandler = throttle(removeFromWatchLater,400);
+
+    const likeVideo = () => {
+        isLoggedIn
+        ? addToLikedVideos(value)
+        : navigate("/login");
+    }
+
+    const unlikeVideo = () => {
+        removeFromLikedVideos(_id);
+    }
+
+    const likeVideoHandler = throttle(likeVideo,400);
+
+    const unlikeVideoHandler = throttle(unlikeVideo,400);
+
+    const watchNowHandler = () => {
+        navigate(`/videos/${_id}`);
+        if(isLoggedIn){
+            addToWatchHistory(value);
+        }
+    }
+
     return (
         <>
         <div className="card card-vertical">
+            
             {watchLaterState.find(item=>item._id===_id)
-            ? <i className="fas fa-heart" title="Remove from watch later" onClick={()=>removeFromWatchLaterVideos(_id)} ></i>
-            : <i className="far fa-heart" title="Add to watch later" onClick={()=>{isLoggedIn?addToWatchLaterVideos(value):navigate("/login")}}></i>}
+            
+            ? <i className="fas fa-heart" title="Remove from watch later" 
+            onClick={()=>removeWatchLaterHandler()} ></i>
+            
+            : <i className="far fa-heart" title="Add to watch later" 
+            onClick={()=>watchLaterHandler()}></i>}
+            
             <img src={thumbnail.src} className="img-responsive" alt={thumbnail.alt} />
             <div className="card-content">
                 <h6 className="card-title">{title}</h6>
@@ -28,8 +70,12 @@ export function VideoCard({value}){
                     <div className="btn-like-dislike-wrapper">
                         <button>
                         {likeState.find(item=>item._id===_id)
-                        ? <i className="fas fa-thumbs-up" title="Remove from liked videos" onClick={()=>removeFromLikedVideos(_id)} ></i>
-                        : <i className="far fa-thumbs-up" title="Add to liked videos" onClick={()=>{isLoggedIn?addToLikedVideos(value):navigate("/login")}}></i>}
+                        
+                        ? <i className="fas fa-thumbs-up" title="Remove from liked videos" 
+                        onClick={()=>unlikeVideoHandler()} ></i>
+                        
+                        : <i className="far fa-thumbs-up" title="Add to liked videos" 
+                        onClick={()=>likeVideoHandler()}></i>}
                         </button>
                         <button onClick={()=>{
                             if(isLoggedIn){
@@ -42,7 +88,7 @@ export function VideoCard({value}){
                     </div>
                 </div>
             </div>
-            <button className="btn btn-primary" onClick={()=>{isLoggedIn?addToWatchHistory(value):navigate("/login")}}>Watch Now</button>
+            <button className="btn btn-primary" onClick={()=>watchNowHandler()}>Watch Now</button>
         </div>
         </>
     );

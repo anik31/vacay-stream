@@ -1,0 +1,49 @@
+.video-frame{
+    width: 100%;
+    height: 30rem;
+}
+
+.video-container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.btn-grp{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.btn-grp .far, .btn-grp .fas{
+    font-size: 1.3rem;
+    margin-right: 0.4rem;
+}
+
+
+.btn-grp .fas.fa-thumbs-up{
+    color: var(--primary-color);
+}
+
+.btn-grp .fas.fa-heart{
+    color: #ff4343;
+}
+
+.video-container hr{
+    margin: 0.5rem 0;
+}
+
+.video-container p{
+    margin: 0.5rem 0 4rem 0;
+}
+
+@media only screen and (max-width:480px){
+    .btn-grp{
+        gap: 0;
+    }
+    .video-frame{
+        height: 25rem;
+    }
+}

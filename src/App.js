@@ -1,7 +1,8 @@
 import "./styles.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Mockman from "mockman-js";
-import { Home, Videos, LikedVideos, WatchLater, History, Playlist, SinglePlaylist, Page404, Login, Signup } from "./pages";
+import { Home, Videos, LikedVideos, WatchLater, History, Playlist, 
+  SinglePlaylist, Page404, Login, Signup, SingleVideo } from "./pages";
 import { Navbar, Sidebar, RequireAuth } from "./components";
 import { useEffect } from "react";
 import { useVideo, useLike, useHistory, usePlaylist, useWatchLater, useAuth } from "./context";
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/videos" element={<Videos/>} />
+          <Route path="/videos/:videoId" element={<SingleVideo/>} />
           <Route path="/playlists" element={<RequireAuth> <Playlist/> </RequireAuth>} />
           <Route path="/playlists/:playlistId" element={<RequireAuth> <SinglePlaylist/> </RequireAuth>} />
           <Route path="/liked" element={<RequireAuth> <LikedVideos/> </RequireAuth>} />
