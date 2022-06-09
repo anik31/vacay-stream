@@ -58,7 +58,7 @@ input[type="checkbox"]{
     padding: 2rem;
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
     justify-items: center;    
 }
 
@@ -101,6 +101,6 @@ input[type="checkbox"]{
     .video-cards-container{
         padding: 0.5rem;
         gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(15.3rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(15.3rem, 1fr));
     }    
 }
