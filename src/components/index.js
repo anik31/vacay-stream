@@ -5,4 +5,6 @@ export {PlaylistModal} from "./PlaylistModal/PlaylistModal";
 export {PageVideoCard} from "./Cards/PageVideoCard";
 export {Sidebar} from "./Sidebar/Sidebar";
 export {EmptyVideoPage} from "./EmptyVideoPage";
-export {RequireAuth} from "./RequireAuth";
+export {RequireAuth} from "./Routes/RequireAuth";
+export {RestrictAuth} from "./Routes/RestrictAuth";
+export {WithSidebar} from "./Routes/WithSidebar";
