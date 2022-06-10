@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://vacay-stream.netlify.app/">
-    <img src="src/assets/images/logo.png" alt="Vacay Store logo">
+    <img src="https://res.cloudinary.com/anik-vacay/image/upload/v1654837535/vacay-stream/images/logo_yslf5c.png" alt="Vacay Stream logo">
   </a>
 </p>
 <h4 align="center"><i>Discover India's top vacation & adventure destinations
