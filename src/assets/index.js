@@ -1,12 +1,12 @@
-import beach from "./images/beach.jfif";
-import jungleSafari from "./images/jungle-safari.jfif";
-import trekking from "./images/trekking.jfif";
-import hillStation from "./images/mountain.jfif";
-import logo from "./images/logo.png";
-import hero from "./svg/hero.svg";
-import illustration404 from "./svg/404.svg";
-import emptyPlaylist from "./svg/empty-playlist.svg";
-import emptyVideoPage from "./svg/empty-video.svg";
+const beach = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837535/vacay-stream/images/beach_pm0php.jpg";
+const jungleSafari = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837534/vacay-stream/images/jungle-safari_iv2jtl.jpg";
+const trekking = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837535/vacay-stream/images/trekking_ftz3zq.jpg";
+const hillStation = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837535/vacay-stream/images/mountain_izfqwv.jpg";
+const logo = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837535/vacay-stream/images/logo_yslf5c.png";
+const hero = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837545/vacay-stream/svg/hero_elgpwh.svg";
+const illustration404 = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837545/vacay-stream/svg/404_xddfiz.svg";
+const emptyPlaylist = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837545/vacay-stream/svg/empty-playlist_yfm9qd.svg";
+const emptyVideoPage = "https://res.cloudinary.com/anik-vacay/image/upload/v1654837545/vacay-stream/svg/empty-video_ycoygy.svg";
 
-export {beach, jungleSafari, trekking, hillStation, hero, logo, 
-    illustration404, emptyPlaylist, emptyVideoPage};
+export {beach, jungleSafari, trekking, hillStation, hero, logo, illustration404, 
+    emptyPlaylist, emptyVideoPage};

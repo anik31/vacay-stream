@@ -1,6 +1,7 @@
 import {createContext, useContext, useState} from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
 
 const AuthContext = createContext(null);
 
@@ -18,6 +19,7 @@ const AuthProvider = ({children}) => {
                     data: credentials,
                     url: "/api/auth/login"
                 });
+                toast.success('Login successful');
                 if (status === 200) {
                 setIsLoggedIn(true);
                 setToken(encodedToken);
@@ -26,7 +28,7 @@ const AuthProvider = ({children}) => {
                 localStorage.setItem("encodedToken", encodedToken);
                 }
             } catch (error) {
-                console.error("Error in login user", error);
+                toast.error(error.response.data.errors[0]);
             }
     };
     
@@ -37,6 +39,7 @@ const AuthProvider = ({children}) => {
                 data: credentials,
                 url: "/api/auth/signup"
             });
+            toast.success('Signup successful');
             if (status === 201) {
                 setIsLoggedIn(true);
                 setToken(encodedToken);
@@ -45,10 +48,11 @@ const AuthProvider = ({children}) => {
                 localStorage.setItem("encodedToken", encodedToken);
             }
         } catch (error) {
-          console.error("Error in login user", error);
+            toast.error(error.response.data.errors[0]);
         }
     };
     const logoutUser = () => {
+        toast.success('Logged out');
         setIsLoggedIn(false);
         setToken("");
         setUser({});

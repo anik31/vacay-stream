@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import "./singleVideo.css";
 import { useVideo, useLike, usePlaylist, useWatchLater, useAuth } from "../../context";
 import { throttle } from "../../utils";
@@ -13,11 +13,12 @@ export function SingleVideo(){
     const currentVideo = videoState.videos.filter(({_id})=>_id===videoId)[0];
     const navigate = useNavigate();
     const {isLoggedIn} = useAuth();
+    const location = useLocation();
 
     const addToWatchLater = () => {
         isLoggedIn
         ? addToWatchLaterVideos(currentVideo)
-        : navigate("/login");
+        : navigate("/login", {replace: true, state: {from: location}});
     }
     
     const removeFromWatchLater = () => {
@@ -31,7 +32,7 @@ export function SingleVideo(){
     const likeVideo = () => {
         isLoggedIn
         ? addToLikedVideos(currentVideo)
-        : navigate("/login");
+        : navigate("/login", {replace: true, state: {from: location}});
     }
 
     const unlikeVideo = () => {
@@ -88,7 +89,7 @@ export function SingleVideo(){
                         setModalData(currentVideo)
                         setIsPlaylistModalVisible(true)
                     }else{
-                        navigate("/login")
+                        navigate("/login", {replace: true, state: {from: location}})
                     }}}
                 >
                     <i className="far fa-bookmark" title="Save to playlist"></i>

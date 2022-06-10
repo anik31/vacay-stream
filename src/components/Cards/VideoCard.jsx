@@ -1,6 +1,6 @@
 import "./card.css"
 import {useAuth, useHistory, useLike, usePlaylist, useWatchLater} from "../../context";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { throttle } from "../../utils";
 
 export function VideoCard({value}){
@@ -11,11 +11,12 @@ export function VideoCard({value}){
     const {setModalData, setIsPlaylistModalVisible} = usePlaylist();
     const {isLoggedIn} = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const addToWatchLater = () => {
         isLoggedIn
         ? addToWatchLaterVideos(value)
-        : navigate("/login");
+        : navigate("/login", {replace: true, state: {from: location}});
     }
     
     const removeFromWatchLater = () => {
@@ -29,7 +30,7 @@ export function VideoCard({value}){
     const likeVideo = () => {
         isLoggedIn
         ? addToLikedVideos(value)
-        : navigate("/login");
+        : navigate("/login", {replace: true, state: {from: location}});
     }
 
     const unlikeVideo = () => {
@@ -82,7 +83,7 @@ export function VideoCard({value}){
                                 setModalData(value)
                                 setIsPlaylistModalVisible(true)
                             }else{
-                                navigate("/login")
+                                navigate("/login", {replace: true, state: {from: location}})
                             }
                             }}><i className="far fa-bookmark" title="Save to playlist"></i></button>
                     </div>

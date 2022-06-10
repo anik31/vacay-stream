@@ -2,6 +2,7 @@ import {useState, createContext, useContext, useReducer} from "react";
 import {playlistReducer} from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import toast from 'react-hot-toast';
 
 const PlaylistContext = createContext(null);
 
@@ -22,8 +23,8 @@ const PlaylistProvider = ({children}) => {
           if(status===200){
               playlistDispatch({type:"SET_PLAYLIST", payload: data.playlists})
           }
-      }catch(err){
-          console.error(err);
+      }catch(error){
+          toast.error(error.response.data.errors[0]);
       }
     }
 
@@ -35,11 +36,12 @@ const PlaylistProvider = ({children}) => {
               data: {playlist: {title:playlistTitle, description:""}},
               headers: {authorization: encodedToken}
             });
+            toast.success("Playlist created");
             if(status===201){
               playlistDispatch({type:"SET_PLAYLIST", payload: data.playlists});
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -50,11 +52,12 @@ const PlaylistProvider = ({children}) => {
               url: `/api/user/playlists/${playlistId}`,
               headers: {authorization: encodedToken}
             });
+            toast.success("Playlist deleted");
             if(status===200){
               playlistDispatch({type:"SET_PLAYLIST", payload: data.playlists});
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -66,11 +69,12 @@ const PlaylistProvider = ({children}) => {
               data: {video: postData},
               headers: {authorization: encodedToken}
             });
+            toast.success("Video added to playlist");
             if(status===201){
               playlistDispatch({type:"SET_SINGLE_PLAYLIST", payload: data.playlist});
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
       
@@ -81,11 +85,12 @@ const PlaylistProvider = ({children}) => {
               url: `/api/user/playlists/${playlistId}/${videoId}`,
               headers: {authorization: encodedToken}
             });
+            toast.success("Video removed from playlist");
             if(status===200){
               playlistDispatch({type:"SET_SINGLE_PLAYLIST", payload: data.playlist});
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }      
 

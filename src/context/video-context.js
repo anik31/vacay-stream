@@ -1,6 +1,7 @@
 import {createContext, useContext, useReducer} from "react";
 import {videoReducer} from "../reducer";
 import axios from "axios";
+import toast from 'react-hot-toast';
 
 const VideoContext = createContext(null);
 
@@ -23,8 +24,8 @@ const VideoProvider = ({children}) => {
             if(status===200){
                 videoDispatch({type:"SET_VIDEOS", payload: data.videos})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 
@@ -37,8 +38,8 @@ const VideoProvider = ({children}) => {
             if(status===200){
                 videoDispatch({type:"SET_CATEGORIES", payload: data.categories})
             }
-        }catch(err){
-            console.error(err);
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
         }
     }
 
