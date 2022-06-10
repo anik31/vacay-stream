@@ -1,6 +1,7 @@
 import "./PlaylistModal.css";
 import {usePlaylist} from "../../context";
 import {useState} from "react";
+import toast from "react-hot-toast";
 
 export function PlaylistModal(){
     const [playlistTitle, setPlaylistTitle] = useState("");
@@ -11,6 +12,8 @@ export function PlaylistModal(){
         if(playlistTitle !== ""){
             addNewPlaylist(playlistTitle);
             setPlaylistTitle("");
+        }else{
+            toast.error("Enter playlist title");
         }
     }
     
@@ -28,7 +31,7 @@ export function PlaylistModal(){
                 </ul>
                 <div className="input-btn-wrapper">
                     <input type="text" value={playlistTitle} placeholder="Playlist title" 
-                    onChange={(e)=>setPlaylistTitle(e.target.value)} />    
+                    onChange={(e)=>setPlaylistTitle(e.target.value.trim())} />    
                     <button className="btn btn-primary" onClick={createPlaylistHandler}>Create</button>
                 </div>
             </output>

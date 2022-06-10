@@ -37,7 +37,7 @@ const HistoryProvider = ({children}) => {
               historyDispatch({type:"SET_HISTORY", payload: data.history})
             }
         }catch(error){
-            toast.error(error.response.data.errors[0]);
+            console.error(error.response.data.errors[0]);
         }
     }
       

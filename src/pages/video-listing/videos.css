@@ -14,6 +14,13 @@
     font-size: 1.1rem;
 }
 
+.empty-state{
+    margin: 4rem 0;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+}
+
 /* || media queries */
 
 @media only screen and (max-width: 640px){

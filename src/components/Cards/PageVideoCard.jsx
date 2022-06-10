@@ -1,6 +1,6 @@
 import "./card.css"
 import {useHistory, useLike, usePlaylist, useWatchLater} from "../../context";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 
 export function PageVideoCard({value}){
     const {_id, title, creator, views, uploaded, thumbnail} = value;
@@ -10,6 +10,7 @@ export function PageVideoCard({value}){
     const {removeFromLikedVideos} = useLike();
     const {removeFromWatchLaterVideos} = useWatchLater();
     const {removeVideoFromPlaylist} = usePlaylist();
+    const navigate = useNavigate();
 
     const deleteBtnHandler = () => {
         if(pathname === "/history"){
@@ -20,6 +21,13 @@ export function PageVideoCard({value}){
             removeFromWatchLaterVideos(_id);
         }else{
             removeVideoFromPlaylist(playlistId, _id);
+        }
+    }
+
+    const watchNowHandler = () => {
+        navigate(`/videos/${_id}`);
+        if(isLoggedIn){
+            addToWatchHistory(value);
         }
     }
 
@@ -36,7 +44,7 @@ export function PageVideoCard({value}){
                     <span className="text-gray text-sm">{uploaded} ago</span>
                 </div>
             </div>
-            <button className="btn btn-primary" onClick={()=>addToWatchHistory(value)}>Watch Now</button>
+            <button className="btn btn-primary" onClick={watchNowHandler}>Watch Now</button>
         </div>
     );
 }

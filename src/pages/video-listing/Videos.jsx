@@ -14,9 +14,12 @@ export function Videos(){
         <div className="video-page-container">
             <main>
                 <CategoryChips/>
-                <div className="video-cards-container">
-                {searchedVideos.map(item=><VideoCard key={item._id} value={item} />)}
+                {searchedVideos.length>0
+                ? <div className="video-cards-container">
+                    {searchedVideos.map(item=><VideoCard key={item._id} value={item} />)}
                 </div>
+                : <p className="empty-state">No Videos Found</p>
+                }
             </main>
             {isPlaylistModalVisible && <PlaylistModal/>}
         </div>        

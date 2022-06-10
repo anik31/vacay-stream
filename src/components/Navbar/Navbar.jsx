@@ -58,7 +58,7 @@ export function Navbar(){
         <div className="search-box">
             <i className="fas fa-search"></i>
         
-            <input type="text" placeholder="Search" onChange={({target})=>setSearchData(target.value)} 
+            <input type="text" placeholder="Search" value={searchData} onChange={({target})=>setSearchData(target.value.trim())} 
             onKeyUp={searchHandler}/>
         </div>
         <nav className="navigation nav-hide-login">

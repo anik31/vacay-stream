@@ -1,6 +1,7 @@
 import "./PlaylistModal.css";
 import { useState } from "react";
 import {usePlaylist} from "../../context";
+import toast from "react-hot-toast";
 
 export function CreatePlaylistModal(){
     const [playlistTitle, setPlaylistTitle] = useState("");
@@ -10,6 +11,8 @@ export function CreatePlaylistModal(){
         if(playlistTitle !== ""){
             addNewPlaylist(playlistTitle);
             setIsCreateModalVisible(false);
+        }else{
+            toast.error("Enter playlist title");
         }
     };
 
@@ -18,7 +21,7 @@ export function CreatePlaylistModal(){
             <output className="modal">
                 <button onClick={()=>setIsCreateModalVisible(false)}><i className="btn-icon fas fa-times"></i></button>
                 <h2>Create New Playlist</h2>
-                <input type="text" placeholder="Playlist title" onChange={e=>setPlaylistTitle(e.target.value)} />
+                <input type="text" placeholder="Playlist title" value={playlistTitle} onChange={e=>setPlaylistTitle(e.target.value.trim())} />
                 <button className="btn btn-primary" onClick={createPlaylistHandler}>Create Playlist</button>
             </output>
         </div>

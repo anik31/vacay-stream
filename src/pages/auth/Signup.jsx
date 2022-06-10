@@ -40,20 +40,20 @@ export function Signup(){
         {errMsg && <p className="err-msg">{errMsg}</p>}
         <div className="input input-text">
             <label>Email address</label>
-            <input type="email" value={credentials.email} placeholder="example@gmail.com" onChange={(e)=>setCredentials(prev=>({...prev, email: e.target.value}))} />
+            <input type="email" value={credentials.email} placeholder="example@gmail.com" onChange={(e)=>setCredentials(prev=>({...prev, email: e.target.value.trim()}))} />
         </div>
         <div className="input input-text">
             <label>First name</label>
-            <input type="text" value={credentials.firstName} placeholder="First name" onChange={(e)=>setCredentials(prev=>({...prev, firstName: e.target.value}))} />
+            <input type="text" value={credentials.firstName} placeholder="First name" onChange={(e)=>setCredentials(prev=>({...prev, firstName: e.target.value.trim()}))} />
         </div>
         <div className="input input-text">
             <label>Last name</label>
-            <input type="text" value={credentials.lastName} placeholder="Last name" onChange={(e)=>setCredentials(prev=>({...prev, lastName: e.target.value}))} />
+            <input type="text" value={credentials.lastName} placeholder="Last name" onChange={(e)=>setCredentials(prev=>({...prev, lastName: e.target.value.trim()}))} />
         </div>
         <div className="input input-text">
             <label>Password</label>
             <div className="password-wrapper">
-            <input type={isPasswordVisible?"text":"password"} value={credentials.password} placeholder="password" onChange={(e)=>setCredentials(prev=>({...prev, password: e.target.value}))} />
+            <input type={isPasswordVisible?"text":"password"} value={credentials.password} placeholder="password" onChange={(e)=>setCredentials(prev=>({...prev, password: e.target.value.trim()}))} />
                 <button onClick={passwordVisibilityHandler}>
                 {isPasswordVisible
                 ? <i className="far fa-eye-slash"></i>
@@ -64,7 +64,7 @@ export function Signup(){
         <div className="input input-text">
             <label>Confirm password</label>
             <div className="password-wrapper">
-            <input type={isConfirmPasswordVisible?"text":"password"} value={confirmPass} placeholder="confirm password" onChange={(e)=>setConfirmPass(e.target.value)} />
+            <input type={isConfirmPasswordVisible?"text":"password"} value={confirmPass} placeholder="confirm password" onChange={(e)=>setConfirmPass(e.target.value.trim())} />
                 <button onClick={confirmPasswordVisibilityHandler}>
                 {isConfirmPasswordVisible
                 ? <i className="far fa-eye-slash"></i>

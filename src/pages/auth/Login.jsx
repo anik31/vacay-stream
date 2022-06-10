@@ -11,8 +11,8 @@ export function Login(){
         password: ""
     });
     const testCredentials = {
-        email: "adarshbalika@gmail.com",
-        password: "adarshBalika123"
+        email: "aniketprakash@gmail.com",
+        password: "aniketPrakash123"
     };
     const [errMsg, setErrMsg] = useState("");
 
@@ -39,13 +39,13 @@ export function Login(){
             <div className="input input-text">
                 <label>Email address</label>
                 <input type="email" value={credentials.email} 
-                placeholder="example@gmail.com" onChange={(e)=>{setCredentials(prev=>({...prev, email:e.target.value}))}} />
+                placeholder="example@gmail.com" onChange={(e)=>{setCredentials(prev=>({...prev, email:e.target.value.trim()}))}} />
             </div>
             <div className="input input-text">
                 <label>Password</label>
                 <div className="password-wrapper">
                     <input type={isPasswordVisible?"text":"password"} 
-                    value={credentials.password} placeholder="password" onChange={(e)=>{setCredentials(prev=>({...prev, password:e.target.value}))}} />
+                    value={credentials.password} placeholder="password" onChange={(e)=>{setCredentials(prev=>({...prev, password:e.target.value.trim()}))}} />
                     <button onClick={passwordVisibilityHandler}>
                     {isPasswordVisible
                     ? <i className="far fa-eye-slash"></i>
