@@ -1,9 +1,9 @@
 import "./styles.css";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 import { Home, Videos, LikedVideos, WatchLater, History, Playlist, 
   SinglePlaylist, Page404, Login, Signup, SingleVideo } from "./pages";
-import { Navbar, Sidebar, RequireAuth, RestrictAuth, WithSidebar } from "./components";
+import { Navbar, RequireAuth, RestrictAuth, WithSidebar } from "./components";
 import { useEffect } from "react";
 import { useVideo, useLike, useHistory, usePlaylist, useWatchLater, useAuth } from "./context";
 import {useScrollToTop} from "./hooks/useScrollToTop";
@@ -15,7 +15,6 @@ function App() {
   const {getWatchLaterVideos} = useWatchLater();
   const {getWatchHistory} = useHistory();
   const {getPlaylists} = usePlaylist();
-  const location = useLocation();
   const {token} = useAuth();
 
   useScrollToTop();
