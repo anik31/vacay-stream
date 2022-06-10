@@ -1,17 +1,18 @@
-.grid-container-auth{
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
+.form{
+    width: 28rem;
+    margin: 2rem 0;
 }
 
-.grid-container-auth .form{
-    margin: 3rem 1rem;
-    min-width: 35vw;
+.container-auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
 }
 
-.grid-container-auth input[type="text"], 
-.grid-container-auth input[type="email"], 
-.grid-container-auth input[type="password"]{
+.form input[type="text"], 
+.form input[type="email"], 
+.form input[type="password"]{
     margin: 0;
 }
 

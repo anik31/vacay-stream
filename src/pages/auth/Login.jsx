@@ -32,7 +32,7 @@ export function Login(){
     };
 
     return (
-        <div className="grid-container-auth">
+        <div className="container-auth">
             <div className="form box-shadow">
             <h3>Login</h3>
             {errMsg && <p className="err-msg">{errMsg}</p>}
