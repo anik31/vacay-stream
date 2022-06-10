@@ -8,8 +8,8 @@ export function CreatePlaylistModal(){
     const {setIsCreateModalVisible, addNewPlaylist} = usePlaylist();
 
     const createPlaylistHandler = () => {
-        if(playlistTitle !== ""){
-            addNewPlaylist(playlistTitle);
+        if(playlistTitle.trim() !== ""){
+            addNewPlaylist(playlistTitle.trim());
             setIsCreateModalVisible(false);
         }else{
             toast.error("Enter playlist title");
@@ -21,7 +21,7 @@ export function CreatePlaylistModal(){
             <output className="modal">
                 <button onClick={()=>setIsCreateModalVisible(false)}><i className="btn-icon fas fa-times"></i></button>
                 <h2>Create New Playlist</h2>
-                <input type="text" placeholder="Playlist title" value={playlistTitle} onChange={e=>setPlaylistTitle(e.target.value.trim())} />
+                <input type="text" placeholder="Playlist title" value={playlistTitle} onChange={e=>setPlaylistTitle(e.target.value)} />
                 <button className="btn btn-primary" onClick={createPlaylistHandler}>Create Playlist</button>
             </output>
         </div>

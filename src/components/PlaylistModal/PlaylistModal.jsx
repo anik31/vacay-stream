@@ -9,8 +9,8 @@ export function PlaylistModal(){
         addVideoToPlaylist, removeVideoFromPlaylist} = usePlaylist();
     
     const createPlaylistHandler = () => {
-        if(playlistTitle !== ""){
-            addNewPlaylist(playlistTitle);
+        if(playlistTitle.trim() !== ""){
+            addNewPlaylist(playlistTitle.trim());
             setPlaylistTitle("");
         }else{
             toast.error("Enter playlist title");
@@ -31,7 +31,7 @@ export function PlaylistModal(){
                 </ul>
                 <div className="input-btn-wrapper">
                     <input type="text" value={playlistTitle} placeholder="Playlist title" 
-                    onChange={(e)=>setPlaylistTitle(e.target.value.trim())} />    
+                    onChange={(e)=>setPlaylistTitle(e.target.value)} />    
                     <button className="btn btn-primary" onClick={createPlaylistHandler}>Create</button>
                 </div>
             </output>

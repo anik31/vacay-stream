@@ -19,7 +19,7 @@ export function Login(){
     const passwordVisibilityHandler = () => setIsPasswordVisible(prev=> !prev);
 
     const loginHandler = () => {
-        if(!credentials.email || !credentials.password){
+        if(!credentials.email.trim() || !credentials.password.trim()){
             setErrMsg("Enter credentials");
         }else{
             loginUser(credentials);
@@ -39,13 +39,13 @@ export function Login(){
             <div className="input input-text">
                 <label>Email address</label>
                 <input type="email" value={credentials.email} 
-                placeholder="example@gmail.com" onChange={(e)=>{setCredentials(prev=>({...prev, email:e.target.value.trim()}))}} />
+                placeholder="example@gmail.com" onChange={(e)=>{setCredentials(prev=>({...prev, email:e.target.value}))}} />
             </div>
             <div className="input input-text">
                 <label>Password</label>
                 <div className="password-wrapper">
                     <input type={isPasswordVisible?"text":"password"} 
-                    value={credentials.password} placeholder="password" onChange={(e)=>{setCredentials(prev=>({...prev, password:e.target.value.trim()}))}} />
+                    value={credentials.password} placeholder="password" onChange={(e)=>{setCredentials(prev=>({...prev, password:e.target.value}))}} />
                     <button onClick={passwordVisibilityHandler}>
                     {isPasswordVisible
                     ? <i className="far fa-eye-slash"></i>

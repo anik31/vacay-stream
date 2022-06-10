@@ -21,7 +21,7 @@ export function Navbar(){
     const [searchData, setSearchData] = useState("");
 
     const setSearch = () => {
-        videoDispatch({ type: "SET_SEARCH", payload: searchData });
+        videoDispatch({ type: "SET_SEARCH", payload: searchData.trim() });
     };
 
     const getSearchResults = debounce(setSearch, 300);
@@ -58,7 +58,7 @@ export function Navbar(){
         <div className="search-box">
             <i className="fas fa-search"></i>
         
-            <input type="text" placeholder="Search" value={searchData} onChange={({target})=>setSearchData(target.value.trim())} 
+            <input type="text" placeholder="Search" value={searchData} onChange={({target})=>setSearchData(target.value)} 
             onKeyUp={searchHandler}/>
         </div>
         <nav className="navigation nav-hide-login">
