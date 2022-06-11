@@ -3,6 +3,14 @@ import "./singleVideo.css";
 import { useVideo, useLike, usePlaylist, useWatchLater, useAuth } from "../../context";
 import { throttle } from "../../utils";
 import {PlaylistModal} from "../../components";
+import MoonLoader from "react-spinners/MoonLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 10rem auto;
+  border-color: var(--primary-color);
+`;
 
 export function SingleVideo(){
     const {videoId} = useParams();
@@ -45,6 +53,9 @@ export function SingleVideo(){
 
     return (
         <div className="video-container">
+        {videoState.isVideosLoading
+        ? <MoonLoader color={`var(--primary-color)`} css={override} size={60}/>
+        : <>
         <iframe
               className="video-frame"
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
@@ -102,6 +113,8 @@ export function SingleVideo(){
 
         </div>}
             {isPlaylistModalVisible && <PlaylistModal/>}
+            </>
+        }
         </div>
     );
 };

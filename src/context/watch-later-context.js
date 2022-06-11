@@ -1,4 +1,4 @@
-import {createContext, useContext, useReducer} from "react";
+import {createContext, useContext, useReducer, useState} from "react";
 import {watchLaterReducer} from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
@@ -9,9 +9,11 @@ const WatchLaterContext = createContext(null);
 const WatchLaterProvider = ({children}) => {
     const [watchLaterState, watchLaterDispatch] = useReducer(watchLaterReducer, []);
     const {token: encodedToken} = useAuth();
+    const [isWatchLaterLoading, setIsWatchLaterLoading] = useState(false);
 
     const getWatchLaterVideos = async() => {
         try{
+            setIsWatchLaterLoading(true);
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/user/watchlater",
@@ -22,6 +24,8 @@ const WatchLaterProvider = ({children}) => {
             }
         }catch(error){
           toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsWatchLaterLoading(false);
         }
     }
       
@@ -57,7 +61,7 @@ const WatchLaterProvider = ({children}) => {
     }
       
     return (
-        <WatchLaterContext.Provider value={{watchLaterState, watchLaterDispatch, 
+        <WatchLaterContext.Provider value={{watchLaterState, watchLaterDispatch, isWatchLaterLoading,
         getWatchLaterVideos, addToWatchLaterVideos, removeFromWatchLaterVideos}}>
             {children}
         </WatchLaterContext.Provider>

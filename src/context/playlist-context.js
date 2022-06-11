@@ -12,20 +12,24 @@ const PlaylistProvider = ({children}) => {
     const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
     const [modalData, setModalData] = useState({});
     const {token: encodedToken} = useAuth();
+    const [isPlaylistLoading, setIsPlaylistLoading] = useState(false);
 
     const getPlaylists = async() => {
       try{
-          const {status, data} = await axios({
-              method: "get",
-              url: "/api/user/playlists",
-              headers: {authorization: encodedToken}
-          });
-          if(status===200){
-              playlistDispatch({type:"SET_PLAYLIST", payload: data.playlists})
-          }
-      }catch(error){
-          toast.error(error.response.data.errors[0]);
-      }
+            setIsPlaylistLoading(true);
+            const {status, data} = await axios({
+                method: "get",
+                url: "/api/user/playlists",
+                headers: {authorization: encodedToken}
+            });
+            if(status===200){
+                playlistDispatch({type:"SET_PLAYLIST", payload: data.playlists})
+            }
+        }catch(error){
+            toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsPlaylistLoading(false);
+        }
     }
 
     const addNewPlaylist = async(playlistTitle) => {
@@ -96,7 +100,7 @@ const PlaylistProvider = ({children}) => {
 
     return (
         <PlaylistContext.Provider value={{
-            playlistState, playlistDispatch, 
+            playlistState, playlistDispatch, isPlaylistLoading,
             modalData, setModalData, 
             isCreateModalVisible, setIsCreateModalVisible, 
             isPlaylistModalVisible, setIsPlaylistModalVisible,
