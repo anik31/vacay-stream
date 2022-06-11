@@ -51,6 +51,24 @@ const AuthProvider = ({children}) => {
             toast.error(error.response.data.errors[0]);
         }
     };
+    
+    const verifyUser = async (encodedToken) => {
+        try {
+            const {data, status } = await axios({
+                method: "post",
+                data: {encodedToken},
+                url: "/api/auth/verify"
+            });
+            if (status === 201) {
+                setIsLoggedIn(true);
+                setToken(encodedToken);
+                setUser(data);
+            }
+        } catch (error) {
+            toast.error(error.response.data.errors[0]);
+        }
+    };
+
     const logoutUser = () => {
         toast.success('Logged out');
         setIsLoggedIn(false);
@@ -59,7 +77,8 @@ const AuthProvider = ({children}) => {
         localStorage.setItem("encodedToken", "");
     };
     return (
-        <AuthContext.Provider value={{isLoggedIn, user, token, loginUser, logoutUser, signUpUser}}>
+        <AuthContext.Provider value={{isLoggedIn, user, token, 
+        loginUser, logoutUser, signUpUser, verifyUser}}>
             {children}
         </AuthContext.Provider>
     );

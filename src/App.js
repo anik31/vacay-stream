@@ -15,13 +15,17 @@ function App() {
   const {getWatchLaterVideos} = useWatchLater();
   const {getWatchHistory} = useHistory();
   const {getPlaylists} = usePlaylist();
-  const {token} = useAuth();
+  const {token, verifyUser} = useAuth();
+  const encodedToken = localStorage.getItem("encodedToken");
 
   useScrollToTop();
 
   useEffect(()=>{
     getVideos();
     getCategories();
+    if(encodedToken){
+      verifyUser(encodedToken);
+    }
   },[])
 
   useEffect(()=>{
