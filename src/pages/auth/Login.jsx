@@ -2,9 +2,17 @@ import "./auth.css";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {useAuth} from "../../context";
+import ClipLoader from "react-spinners/ClipLoader";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 0 0.5rem;
+  border-color: #fff;
+`;
 
 export function Login(){
-    const {loginUser} = useAuth();
+    const {loginUser, isAuthLoading} = useAuth();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [credentials, setCredentials] = useState({
         email: "",
@@ -53,8 +61,14 @@ export function Login(){
                     </button>
                 </div>
             </div>
-            <button className="btn btn-primary" onClick={loginHandler} >Login</button>
-            <button className="btn btn-primary-outline" onClick={testLoginHandler}>Test Login</button>
+            <button className="btn btn-primary" onClick={loginHandler} disabled={isAuthLoading}>
+                {isAuthLoading && 
+                <ClipLoader color={`#fff`} css={override} size={20}/>}
+                Login
+            </button>
+            <button className="btn btn-primary-outline" onClick={testLoginHandler} disabled={isAuthLoading}>
+                Test Login
+            </button>
             <Link to="/signup" className="btn btn-secondary-icon-text-no-border">Create New Account <i className="fas fa-chevron-right"></i></Link>
             </div>
         </div>

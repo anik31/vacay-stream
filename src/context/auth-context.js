@@ -11,9 +11,11 @@ const AuthProvider = ({children}) => {
     const [token, setToken] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
+    const [isAuthLoading, setIsAuthLoading] = useState(false);
 
     const loginUser = async (credentials) => {
             try {
+                setIsAuthLoading(true);
                 const {data: { foundUser, encodedToken }, status } = await axios({
                     method: "post",
                     data: credentials,
@@ -29,11 +31,14 @@ const AuthProvider = ({children}) => {
                 }
             } catch (error) {
                 toast.error(error.response.data.errors[0]);
+            }finally{
+                setIsAuthLoading(false);
             }
     };
     
     const signUpUser = async (credentials) => {
         try {
+            setIsAuthLoading(true);
             const {data: { createdUser, encodedToken }, status } = await axios({
                 method: "post",
                 data: credentials,
@@ -49,11 +54,14 @@ const AuthProvider = ({children}) => {
             }
         } catch (error) {
             toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsAuthLoading(false);
         }
     };
     
     const verifyUser = async (encodedToken) => {
         try {
+            setIsAuthLoading(true);
             const {data, status } = await axios({
                 method: "post",
                 data: {encodedToken},
@@ -66,6 +74,8 @@ const AuthProvider = ({children}) => {
             }
         } catch (error) {
             toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsAuthLoading(false);
         }
     };
 
@@ -77,7 +87,7 @@ const AuthProvider = ({children}) => {
         localStorage.setItem("encodedToken", "");
     };
     return (
-        <AuthContext.Provider value={{isLoggedIn, user, token, 
+        <AuthContext.Provider value={{isLoggedIn, user, token, isAuthLoading,
         loginUser, logoutUser, signUpUser, verifyUser}}>
             {children}
         </AuthContext.Provider>

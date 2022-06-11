@@ -1,5 +1,9 @@
 export function videoReducer(state, action){
     switch(action.type){
+        case "SET_VIDEOS_LOADING":
+            return {...state, isVideosLoading: action.payload};
+        case "SET_CATEGORIES_LOADING":
+            return {...state, isCategoriesLoading: action.payload};
         case "SET_VIDEOS":
             return {...state, videos: action.payload};
         case "SET_CATEGORIES":

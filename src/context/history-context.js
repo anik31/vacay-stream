@@ -1,4 +1,4 @@
-import {createContext, useContext, useReducer} from "react";
+import {createContext, useContext, useReducer, useState} from "react";
 import {historyReducer} from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
@@ -9,9 +9,11 @@ const HistoryContext = createContext(null);
 const HistoryProvider = ({children}) => {
     const [historyState, historyDispatch] = useReducer(historyReducer, []);
     const {token: encodedToken} = useAuth();
+    const [isHistoryLoading, setIsHistoryLoading] = useState(false);
     
     const getWatchHistory = async() => {
         try{
+            setIsHistoryLoading(true);
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/user/history",
@@ -22,6 +24,8 @@ const HistoryProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsHistoryLoading(false);
         }
     }
       
@@ -74,7 +78,7 @@ const HistoryProvider = ({children}) => {
     }
       
     return (
-        <HistoryContext.Provider value={{historyState, historyDispatch, 
+        <HistoryContext.Provider value={{historyState, historyDispatch, isHistoryLoading,
         getWatchHistory, addToWatchHistory, removeFromWatchHistory, removeAllWatchHistory}}>
             {children}
         </HistoryContext.Provider>

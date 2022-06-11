@@ -9,7 +9,9 @@ const initialState = {
     videos: [],
     categories: [],
     categoryFilter: "All",
-    searchTerm: ""
+    searchTerm: "",
+    isVideosLoading: false,
+    isCategoriesLoading: false
 }
 
 const VideoProvider = ({children}) => {
@@ -17,6 +19,7 @@ const VideoProvider = ({children}) => {
     
     const getVideos = async() => {
         try{
+            videoDispatch({type:"SET_VIDEOS_LOADING",payload: true});
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/videos"
@@ -26,11 +29,14 @@ const VideoProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            videoDispatch({type:"SET_VIDEOS_LOADING",payload: false});
         }
     }
 
     const getCategories = async() => {
         try{
+            videoDispatch({type:"SET_CATEGORIES_LOADING",payload: true});
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/categories"
@@ -40,6 +46,8 @@ const VideoProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            videoDispatch({type:"SET_CATEGORIES_LOADING",payload: false});
         }
     }
 

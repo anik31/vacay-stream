@@ -1,4 +1,4 @@
-import {createContext, useContext, useReducer} from "react";
+import {createContext, useContext, useReducer, useState} from "react";
 import {likeReducer} from "../reducer";
 import axios from "axios";
 import { useAuth } from "./auth-context";
@@ -9,9 +9,11 @@ const LikeContext = createContext(null);
 const LikeProvider = ({children}) => {
     const [likeState, likeDispatch] = useReducer(likeReducer, []);
     const {token: encodedToken} = useAuth();
+    const [isLikeLoading, setIsLikeLoading] = useState(false);
 
     const getLikedVideos = async() => {
         try{
+            setIsLikeLoading(true);
             const {status, data} = await axios({
                 method: "get",
                 url: "/api/user/likes",
@@ -22,8 +24,10 @@ const LikeProvider = ({children}) => {
             }
         }catch(error){
             toast.error(error.response.data.errors[0]);
+        }finally{
+            setIsLikeLoading(false);
         }
-    }
+    };
       
     const addToLikedVideos = async(postData) => {
         try{
@@ -57,7 +61,7 @@ const LikeProvider = ({children}) => {
     }
     
     return (
-        <LikeContext.Provider value={{likeState, likeDispatch, 
+        <LikeContext.Provider value={{likeState, likeDispatch, isLikeLoading,
         getLikedVideos, addToLikedVideos, removeFromLikedVideos}}>
             {children}
         </LikeContext.Provider>
