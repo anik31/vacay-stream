@@ -24,6 +24,7 @@ https://user-images.githubusercontent.com/56336326/162269043-6b189f47-b42f-4721-
 - Watch Later
 - History
 - Throttling for button clicks
+- Mobile responsive
 - Authentication
     - Sign up
     - Login
