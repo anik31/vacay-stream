@@ -17,10 +17,13 @@ https://user-images.githubusercontent.com/56336326/162269043-6b189f47-b42f-4721-
 - Home page 
 - Video listing page 
 - Filter Videos with Category
+- Debounced search
+- Single video page
 - Playlist management
 - Like/Dislike
 - Watch Later
 - History
+- Throttling for button clicks
 - Authentication
     - Sign up
     - Login
